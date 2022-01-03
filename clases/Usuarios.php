@@ -25,14 +25,13 @@
             }
         }
 
-        //funcion agregar datos personales del usuario fecha_nacimiento, $datos['fechaNacimiento'], ?,
+        //funcion agregar datos personales del usuario 
         public function agregarPersona($datos)
         {
             $conexion = Conexion::conectar();
             $sql = "INSERT INTO t_persona(paterno, 
                                           materno, 
-                                          nombre, 
-                                           
+                                          nombre,                                            
                                           sexo, 
                                           telefono, 
                                           correo, 

@@ -10,20 +10,32 @@
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
       <h1 class="fw-light">Reportes</h1>
-      <p class="lead">Content on the page will</p>
+      <p class="lead">
+      
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalterminarReporte">
+          Terminar reporte
+        </button>
+        <hr>
+        <div id="cargartablareportes">
+          
+        </div>
+      </p>
     </div>
   </div>
 </div>
 
 <?php 
-  
-  include "footer.php"; 
+    include "Reportes/modalTerminarReporte.php"; 
+    include "footer.php";
   }else
   {
     header("location:../index.html");
   }
 
 ?>
+
+<script src="../public/js-usuarios/reportesAdmin.js"></script>
+
 
 <script>
   $(document).ready(function(){

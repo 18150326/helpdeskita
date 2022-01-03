@@ -36,9 +36,6 @@
         <!-- Vistas del usuario -->
       <?php if ($_SESSION['usuario']['rol'] == 1) {?>
         <li class="nav-item">
-          <a class="nav-link" href="misDispositivos.php">Mis Dispositivos</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="misReportes.php">Reportes de Soporte</a>
         </li>
       <?php } ?>
@@ -47,9 +44,6 @@
         <?php if ($_SESSION['usuario']['rol'] == 2) {?>
         <li class="nav-item">
           <a class="nav-link" href="usuariosAdmin.php">Usuarios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="asignacionAdmin.php">Asignación de dispositivos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="reportesAdmin.php">Reportes</a>
@@ -62,7 +56,6 @@
             Usuario <?php echo $_SESSION['usuario']['nombre']; ?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Editar datos</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="../procesos/usuarios/login/salir.php">Cerrar sesión</a>
           </div>
