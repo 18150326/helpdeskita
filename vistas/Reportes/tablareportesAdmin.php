@@ -51,13 +51,13 @@
             
             <td>
                 <?php if($mostrar['estado'] == 1) {?>
-                    <button class="btn btn-warning btn-sm">
+                    <button class="btn btn-warning btn-sm disabled">
                         Pendiente
                     </button>
                 <?php
                 } else {
                 ?>
-                    <button class="btn btn-info btn-sm">
+                    <button class="btn btn-info btn-sm disabled">
                         Resuelto
                     </button>
                 <?php

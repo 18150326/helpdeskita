@@ -12,9 +12,10 @@
       </div>
       <div class="modal-body">
         
-
+        <input type="text" id="idUsuario" name="idUsuario">
         <!-- Formulario en modal -->
         <div class="row">
+            
             <div class="col-sm-4">
                 <label for="areaSolicitante"> Area Solicitante </label>
                 <input type="text" class="form-control" id="areaSolicitante" name="areaSolicitante" required>
@@ -23,7 +24,7 @@
                 <label for="nombreSolicitante"> Nombre del solicitante </label>
                 <input type="text" class="form-control" id="nombreSolicitante" name="nombreSolicitante" required>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-5">
                 <label for="fechaElaboracion"> Fecha de elaboracion </label>
                 <input type="date" class="form-control" id="fechaElaboracion" name="fechaElaboracion" required>
             </div>
@@ -31,7 +32,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <label for="descripcion"> Descripcion </label>
+                <label for="descripcion"> Descripción del servicio solicitado o falla a reparar </label>
                 <textarea name="descripcion" id="descripcion" class="form-control" required></textarea>
             </div>
       </div>
