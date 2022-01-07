@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
@@ -20,8 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `helpdesk`
 --
-CREATE DATABASE IF NOT EXISTS `helpdesk` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `helpdesk`;
+
+USE `b1o04dzhm1guhvmjcrwb`;
 
 -- --------------------------------------------------------
 
