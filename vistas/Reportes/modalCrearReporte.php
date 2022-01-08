@@ -12,7 +12,7 @@
       </div>
       <div class="modal-body">
         
-        <input type="text" id="idUsuario" name="idUsuario">
+        <input type="text" id="idUsuario" name="idUsuario" hidden>
         <!-- Formulario en modal -->
         <div class="row">
             
@@ -38,7 +38,7 @@
       </div>
       <div class="modal-footer">
         <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
-        <button class="btn btn-primary">Crear</button>
+        <button class="btn btn-primary" >Crear</button>
       </div>
     </div>
   </div>

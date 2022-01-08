@@ -1,6 +1,11 @@
 <?php 
 
   include "header.php"; 
+  include "../clases/Reportes.php";
+  $con = new conexion();
+  $conexion1 = $con->conectar();
+  $idUsuario = $_SESSION['usuario']['id'];
+
   if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1){
 
 ?>
@@ -11,10 +16,7 @@
     <div class="card-body p-5">
       <h1 class="fw-light">Mis reportes</h1>
       <p class="lead">
-      
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalcrearReporte">
-          Crear reporte
-        </button>
+
         <hr>
         <div id="cargartablareportes">
           
@@ -34,19 +36,7 @@
 <script src="../public/js-usuarios/reportes.js"></script>
 
 
-<script>
-  $(document).ready(function(){
-      $('#tablaReportesAdminDatatable').Datatable({
-          language : {
-              url . "../public/datatable/es_es.json"
-          },
-          dom: 'Bfrtip',
-          buttons: [
-              'copy', 'csv', 'excel', 'pdf', 'print'
-          ]
-      });
-  })
-</script>
+
 
 <?php 
 
