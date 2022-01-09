@@ -19,15 +19,22 @@
                     t_usuarios AS usuarios ON usuarios.id_usuario = reportes.id_usuario
             WHERE
                     reportes.id_usuario = $idUsuario ";
+
     $respuesta = mysqli_query($conexion1, $sql) or die(mysqli_error($conexion1));
+    $respuestaArray = array();
+
+    while($row = mysqli_fetch_assoc($respuesta)){
+        $respuestaArray[] = $row;
+    }
 ?>
 
 <?php
-            $mostrar1 = mysqli_fetch_array($respuesta);
+            $mostrar1 = $respuestaArray;
+
 ?>
       
 <button class="btn btn-primary" data-toggle="modal" data-target="#modalcrearReporte" 
-                onclick="obtenerDatosUsuario(<?php echo $mostrar1['idUsuario']?>)" >
+                onclick="obtenerDatosUsuario(<?php echo $mostrar1[0]['idUsuario']?>)" >
           Crear reporte
 </button>
 
@@ -43,13 +50,14 @@
         <th>Fecha de elaboracion</th>
         <th>Descripcion</th>
         <th>Estado</th>
+        <th>Imprimir</th>
     
     </thead>
 
     <tbody>
         
         <?php
-            while($mostrar = mysqli_fetch_array($respuesta)){
+            foreach ($respuestaArray as $mostrar) {
         ?>
 
         <tr>
@@ -77,7 +85,7 @@
                     } 
                 ?>
             </td>
-            
+            <td><button type="button" class="btn btn-info" onclick="generarPDF(2)"><i class="fas fa-print"></i></button></td>
         
         </tr>
     

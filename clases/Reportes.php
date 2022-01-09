@@ -8,24 +8,26 @@
         //Funcion para agregar los datos de un reporte a la base de datos
         public function crearReporte($datos)
         {   
-            $conexion = Conexion::conectar();
-            $idUsuario = self::obteneridUsuario($datos['id_usuario']);
-            $sql = "INSERT INTO t_reportes( id_usuario,
-                                            area_solicitante,
-                                            nombre_solicitante,
-                                            fecha_elaboracion,
-                                            descripcion)
-                    VALUES (?, ?, ?, ?, ?)";
-            $query = $conexion->prepare($sql);
-            $query->bind_param("issss",    $idUsuario,
-                                           $datos['area_solicitante'],
-                                           $datos['nombre_solicitante'],
-                                           $datos['fecha_elaboracion'],
-                                           $datos['descripcion']);
-            $respuesta = $query->execute();
-            $query->close();
+            $servidor = "b1o04dzhm1guhvmjcrwb-mysql.services.clever-cloud.com";
+            $usuario = "ulpt7sduld7rn0so";
+            $password = "88bFiBTpsfGsC3WbaBaT";
+            $db = "b1o04dzhm1guhvmjcrwb";
             
-            return $respuesta;
+            $con = mysqli_connect($servidor, $usuario, $password, $db);
+            $con->set_charset("utf8");
+
+            $sql = "INSERT INTO t_reportes(folio, id_usuario, area_solicitante, nombre_solicitante,fecha_elaboracion,descripcion) 
+            VALUES ('".$datos['folio']."', '".$datos['id_usuario']."', '".$datos['area_solicitante']."', '".$datos['nombre_solicitante']."', '".$datos['fecha_elaboracion']."', '".$datos['descripcion']."')";
+
+            $result = mysqli_query($con, $sql);
+
+            /*if($result){
+              echo "Se imprimió bien xd";
+            }else{
+              echo "No se imprimió :c";
+            }*/
+            
+            return $result;
         }
 
         //Funcion para proporcionar el ID del usuario que inció sesión
