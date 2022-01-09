@@ -35,8 +35,9 @@
             $sql = "SELECT
                         usuarios.id_usuario AS idUsuario
                     FROM  t_usuarios AS usuarios
-                         INNER JOIN
-                        t_reportes AS reportes ON usuarios.id_usuario = reportes.id_usuario AND usuarios.id_usuario = '$idUsuario'";
+                         /*INNER JOIN
+                        t_reportes AS reportes ON usuarios.id_usuario = reportes.id_usuario*/ 
+                    WHERE usuarios.id_usuario = '$idUsuario'";
             $respuesta = mysqli_query($conexion, $sql);
             $idusuario = mysqli_fetch_array($respuesta)['idUsuario'];
             return $idusuario;
@@ -52,9 +53,9 @@
                             usuarios.id_usuario AS idUsuario
                     FROM
                             t_usuarios AS usuarios
-                        INNER JOIN
-                            t_reportes AS reportes ON usuarios.id_usuario = reportes.id_usuario
-                        AND usuarios.id_usuario = '$idUsuario'";
+                        /*INNER JOIN
+                            t_reportes AS reportes ON usuarios.id_usuario = reportes.id_usuario*/
+                        WHERE usuarios.id_usuario = '$idUsuario'";
 
             $respuesta = mysqli_query($conexion, $sql);
             $usuario = mysqli_fetch_array($respuesta);
