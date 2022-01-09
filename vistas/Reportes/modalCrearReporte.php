@@ -12,7 +12,7 @@
       </div>
       <div class="modal-body">
         
-        <input type="text" id="idUsuario" name="idUsuario" hidden>
+        <input type="text" id="idUsuario" name="idUsuario">
         <!-- Formulario en modal -->
         <div class="row">
             
