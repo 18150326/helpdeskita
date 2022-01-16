@@ -47,7 +47,7 @@
 
 
 
-
+        //funcion para extraer y usar el id de usuario en la funcion obteneridUsuario
         public function obtenerDatosUsuario($idUsuario)
         {
             $conexion = Conexion::conectar();
@@ -67,7 +67,9 @@
             );
             return $datos;
         }
-}
+
+
+    }
 
         
 ?>

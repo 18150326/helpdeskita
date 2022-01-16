@@ -1,4 +1,4 @@
-<form id="frmterminarReporte" method="POST" onsubmit="return terminarReporte()">
+<form id="frmterminarReporte" method="POST" onsubmit="return terminarReporte()" onsubmit="return actualizarEstadoReporte()">
 
 <!-- Modal Agregar -->
 <div class="modal fade" id="modalterminarReporte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <label for="idReporte"> ID reporte </label>
-                <input type="text" class="form-control" id="tipoServicio" name="tipoServicio" required>
+                <input type="text" class="form-control" id="idReporte" name="idReporte" required>
             </div>
             
             <div class="col-sm-5">
@@ -33,13 +33,6 @@
             <div class="col-sm-4">
                 <label for="asignado"> Asignado a: </label>
                 <input type="text" class="form-control" id="asignado" name="asignado" required>
-            </div>
-            <div class="col-sm-5">
-                <label for="estado">Estado</label>
-                <select name="estado" id="estado" class="form-control" required>
-                    <option value="1">Pendiente</option>
-                    <option value="2">Terminado</option>
-                </select>
             </div>
         </div>
 
@@ -61,7 +54,7 @@
         <div class="row">
             <div class="col-sm-5">
                 <label for="fechaVerificacion"> Fecha de verificación </label>
-                <input type="date" class="form-control" id="fechaVerificacion" name="fechaVerificacion" required>
+                <input type="date" class="form-control" id="fechaVerificado" name="fechaVerificado" required>
             </div>
             <div class="col-sm-9">
                 <label for="aprobado">Aprobado por:</label>
@@ -81,7 +74,6 @@
       </div>
       <div class="modal-footer">
         <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
-        <span class="btn btn-secondary" data-dismiss="modal">Guardar datos</span>
         <button class="btn btn-primary">Terminar reporte</button>
       </div>
     </div>

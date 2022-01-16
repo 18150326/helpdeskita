@@ -50,7 +50,7 @@
         <th>Fecha de elaboracion</th>
         <th>Descripcion</th>
         <th>Estado</th>
-        <th>Imprimir</th>
+        <th>Imprimir reporte terminado</th>
     
     </thead>
 
@@ -85,7 +85,21 @@
                     } 
                 ?>
             </td>
-            <td><button type="button" class="btn btn-info" onclick="generarPDF(2)"><i class="fas fa-print"></i></button></td>
+            <td>
+                <?php if($mostrar['estado'] == 2) {?>
+                    <button type="button" class="btn btn-info btn-sm" onclick="generarPDF(2)">
+                        <i class="fas fa-print"></i>
+                    </button>
+                <?php
+                } else {
+                ?>
+                    <button type="button" class="btn btn-info btn-sm disabled" onclick="generarPDF(2)">
+                        <i class="fas fa-print"></i>
+                    </button>
+                <?php
+                    }
+                ?>
+            </td>
         
         </tr>
     

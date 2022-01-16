@@ -48,7 +48,10 @@
           <a class="nav-link" href="usuariosAdmin.php">Usuarios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="reportesAdmin.php">Reportes</a>
+          <a class="nav-link" href="reportesP_Admin.php">Reportes Pendientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="reportesT_Admin.php">Reportes Terminados</a>
         </li>
         <?php } ?>
 
