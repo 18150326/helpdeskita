@@ -28,7 +28,7 @@
     <title>Help-Desk</title>
 </head>
 <body>
-    
+
     <!-- Navegación -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow d-none">
   <div class="container">
@@ -104,60 +104,17 @@
         <a class="nav-link" href="usuariosAdmin.php">Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="reportesAdmin.php">Reportes</a>
+        <a class="nav-link" href="reportesP_Admin.php">Reportes Pendientes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="reportesT_Admin.php">Reportes Terminados</a>
       </li>
       <?php } ?>
     </ul>
-    <div class="my-2 my-lg-0">      
-      
+    <div class="my-2 my-lg-0">
+
       <a class="btn btn-outline-info" href="#"><?php echo $_SESSION['usuario']['nombre']; ?> <i class="fas fa-cog config-button"></i></a>
       <a class="btn btn-outline-danger" href="../procesos/usuarios/login/salir.php">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
-    </div>
-  </div>
-</nav>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-none">
-  <a class="navbar-brand" href="#">Help - Desk</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="inicio.php">Inicio</a>
-      </li>
-
-      <!-- Vistas del usuario -->
-    <?php if ($_SESSION['usuario']['rol'] == 1) {?>
-      <li class="nav-item">
-        <a class="nav-link" href="misReportes.php">Reportes de Soporte</a>
-      </li>
-    <?php } ?>
-
-      <!-- Vistas del administrador -->
-      <?php if ($_SESSION['usuario']['rol'] == 2) {?>
-      <li class="nav-item">
-        <a class="nav-link" href="usuariosAdmin.php">Usuarios</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="reportesAdmin.php">Reportes</a>
-      </li>
-      <?php } ?>
-    </ul>
-    <div class="my-2 my-lg-0">      
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?php echo $_SESSION['usuario']['nombre']; ?> <i class="fas fa-cog config-button"></i>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item text-info" href="#">Perfil <i class="fas fa-user"></i></a>          
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-info" href="../procesos/usuarios/login/salir.php">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
-        </div>
-      </li>
-      <!-- <a class="btn btn-outline-info" href="#"><i class="fas fa-cog config-button"></i></a>
-      <a class="btn btn-outline-danger" href="../procesos/usuarios/login/salir.php">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a> -->
     </div>
   </div>
 </nav>
