@@ -33,7 +33,7 @@
 
 ?>
       
-<button class="btn btn-primary" data-toggle="modal" data-target="#modalcrearReporte" 
+<button id="button-crear_reportes" class="btn btn-primary" data-toggle="modal" data-target="#modalcrearReporte" 
                 onclick="obtenerDatosUsuario(<?php echo $mostrar1[0]['idUsuario']?>)" >
           Crear reporte
 </button>
