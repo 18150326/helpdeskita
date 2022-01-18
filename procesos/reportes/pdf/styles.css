@@ -1,0 +1,87 @@
+/*Estilos para la tabla del header*/
+.table_footer, .table_footer th, .table_footer td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-family:  arial;
+  font-size: 11px;
+  /*font-style: bold;*/
+}
+
+.logo_ita_header{
+	margin: 5 10px; 
+}
+
+/*Estilos para el título principal*/
+.titulo{
+	text-align: center;
+	font-size: 13px;
+	font-family:  arial;
+}
+
+/*Estilos para el footer*/
+.footer{
+	font-size: 10px;
+	font-family:  arial;
+}
+
+/*Estilos para la tabla de la izquierda*/
+.tabla_1, .tabla_1 th, .tabla_1 td{
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-family:  arial;
+	font-size: 11px;
+}
+.tabla_1{
+	margin-left: 450px;
+}
+
+/*Estilos para folio*/
+.folio{
+	font-size: 12px;
+	font-family:  arial;
+	margin-left: 605px;	
+	margin-top: 10px;
+}
+/*Formato para inputs*/
+.input{
+	border: none;
+	border-bottom: 2px solid;	
+}
+
+/*estilos para la parte del area solicitante*/
+.area_solicitante, .area_solicitante th, .area_solicitante td
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-family:  arial;
+	font-size: 13px;
+	margin-top: 15px;
+	height: 40px;
+}
+
+/*Diseño para la descripción*/
+.tabla_descripcion, .tabla_descripcion th, .tabla_descripcion td{
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-family:  arial;
+	font-size: 13px;	
+	height: 40px;
+}
+.tabla_descripcion{
+	margin-top: 15px;
+}
+
+
+/*Estilos para la seccion del departamento*/
+.texto_departamento {
+	font-family:  arial;
+	font-size: 12px;
+}
+
+/*Estilos para la tabla de instructivos*/
+.tabla_instructivo, .tabla_instructivo th, .tabla_instructivo td{
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-family:  arial;
+	font-size: 13px;
+}

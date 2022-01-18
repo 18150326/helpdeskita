@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-  include "header.php"; 
+  include "header.php";
   include "../clases/Reportes.php";
   $con = new conexion();
   $conexion1 = $con->conectar();
@@ -24,7 +24,7 @@
 
         <hr>
         <div id="cargartablareportes">
-          
+
         </div>
       </p>
 
@@ -33,9 +33,9 @@
 </div>
 
 
-<?php 
+<?php
   include "Reportes/modalCrearReporte.php";
-  include "footer.php"; 
+  include "footer.php";
 ?>
 
 <script src="../public/js-usuarios/reportes.js"></script>
@@ -44,17 +44,18 @@
 <script>
   const loadingSpinner = document.getElementById("loaderPrincipal");
 
-  window.addEventListener("load", async function (e) {    
+  window.addEventListener("load", async function (e) {
     setTimeout(function(){
       loadingSpinner.classList.add('d-none');
     }, 1000);
-    
+
   });
-  
+
 </script>
 
+<script src="../procesos/reportes/pdf/generar-pdf-script.js"></script>
 
-<?php 
+<?php
 
   }else
   {

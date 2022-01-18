@@ -4,7 +4,7 @@
     $con = new conexion();
     $conexion1 = $con->conectar();
     $idUsuario = $_SESSION['usuario']['id'];
-    $sql = "SELECT 
+    $sql = "SELECT
                     reportes.id_reporte AS idReporte,
                     usuarios.id_usuario AS idUsuario,
                     reportes.folio AS folio,
@@ -32,8 +32,8 @@
             $mostrar1 = $respuestaArray;
 
 ?>
-      
-<button id="button-crear_reportes" class="btn btn-primary" data-toggle="modal" data-target="#modalcrearReporte" 
+
+<button id="button-crear_reportes" class="btn btn-primary" data-toggle="modal" data-target="#modalcrearReporte"
                 onclick="obtenerDatosUsuario(<?php echo $mostrar1[0]['idUsuario']?>)" >
           Crear reporte
 </button>
@@ -51,11 +51,11 @@
         <th>Descripcion</th>
         <th>Estado</th>
         <th>Imprimir reporte terminado</th>
-    
+
     </thead>
 
     <tbody>
-        
+
         <?php
             foreach ($respuestaArray as $mostrar) {
         ?>
@@ -69,7 +69,7 @@
             <td><?php echo $mostrar['nombreSolicitante']; ?></td>
             <td><?php echo $mostrar['fechaElaboracion']; ?></td>
             <td><?php echo $mostrar['descripcion']; ?></td>
-            
+
             <td>
                 <?php if($mostrar['estado'] == 1) {?>
                     <button class="btn btn-warning btn-sm disabled">
@@ -82,27 +82,27 @@
                         Resuelto
                     </button>
                 <?php
-                    } 
+                    }
                 ?>
             </td>
             <td>
                 <?php if($mostrar['estado'] == 2) {?>
-                    <button type="button" class="btn btn-info btn-sm" onclick="generarPDF(2)">
-                        <i class="fas fa-print"></i>
-                    </button>
+                  <button type="button" class="btn btn-info btn-sm" onclick="generarPDF(<?php echo $mostrar['idReporte']; ?>)">
+                      <i class="fas fa-print"></i>
+                  </button>
                 <?php
                 } else {
                 ?>
-                    <button type="button" class="btn btn-info btn-sm disabled" onclick="generarPDF(2)">
+                    <button type="button" class="btn btn-warning btn-sm disabled">
                         <i class="fas fa-print"></i>
                     </button>
                 <?php
                     }
                 ?>
             </td>
-        
+
         </tr>
-    
+
         <?php
         }
         ?>
@@ -113,6 +113,6 @@
 
 <script>
     $(document).ready(function(){
-       $('#tablaReportesDataTable').DataTable(); 
+       $('#tablaReportesDataTable').DataTable();
     });
 </script>

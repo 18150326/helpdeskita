@@ -2,7 +2,7 @@
     include "../../clases/conexion.php";
     $con = new conexion();
     $conexion1 = $con->conectar();
-    $sql = "SELECT 
+    $sql = "SELECT
                         reportes.id_reporte AS idReporte,
                         usuarios.id_usuario AS idUsuario,
                         reportes.folio AS folio,
@@ -33,11 +33,11 @@
         <th>Descripcion</th>
         <th>Imprimir reporte de solicitud</th>
         <th>Estado</th>
-    
+
     </thead>
 
     <tbody>
-        
+
         <?php
             while($mostrar = mysqli_fetch_array($respuesta)){
         ?>
@@ -51,12 +51,12 @@
             <td><?php echo $mostrar['nombreSolicitante']; ?></td>
             <td><?php echo $mostrar['fechaElaboracion']; ?></td>
             <td><?php echo $mostrar['descripcion']; ?></td>
-            
+
             <td>
                 <?php if($mostrar['estado' == 1]){?>
-                    <button class="btn btn-warning btn-sm">
-                        <i class="fas fa-print"></i>
-                    </button>
+                  <button type="button" class="btn btn-info btn-sm disabled" onclick="generarPDF(<?php echo $mostrar['idReporte']; ?>)">
+                      <i class="fas fa-print"></i>
+                  </button>
                 <?php
                 }
                 ?>
@@ -68,13 +68,13 @@
                         Pendiente
                     </button>
                 <?php
-                } 
+                }
                 ?>
             </td>
-            
-        
+
+
         </tr>
-    
+
         <?php
         }
         ?>
@@ -85,6 +85,6 @@
 
 <script>
     $(document).ready(function(){
-       $('#tablaReportesAdminDataTable').DataTable(); 
+       $('#tablaReportesAdminDataTable').DataTable();
     });
 </script>
