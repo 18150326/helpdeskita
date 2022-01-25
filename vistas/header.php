@@ -3,6 +3,10 @@
 
   session_start();
 
+  if(!isset($_SESSION['usuario'])){
+    header("location:../procesos/usuarios/login/salir.php");    
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -113,7 +117,9 @@
     </ul>
     <div class="my-2 my-lg-0">
 
-      <a class="btn btn-outline-info" href="#"><?php echo $_SESSION['usuario']['nombre']; ?> <i class="fas fa-cog config-button"></i></a>
+      <?php if ($_SESSION['usuario']['rol'] == 2) {?>
+      <a class="btn btn-outline-info" href="perfil.php"><?php echo $_SESSION['usuario']['nombre']; ?> <i class="fas fa-cog config-button"></i></a>
+      <?php } ?>
       <a class="btn btn-outline-danger" href="../procesos/usuarios/login/salir.php">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
     </div>
   </div>
