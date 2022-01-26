@@ -13,7 +13,8 @@
                         finalizados.verificado_liberado AS verificadoLiberado,
                         finalizados.fecha_verificado AS fechaVerificado,
                         finalizados.aprobado AS aprobado,
-                        finalizados.fecha_aprobado AS fechaAprobado
+                        finalizados.fecha_aprobado AS fechaAprobado,
+                        finalizados.firma_verificacion AS firmaVerificacion
             FROM
                 t_reportes AS reportes
                  INNER JOIN
@@ -38,6 +39,7 @@
         <th>Aprobado</th>
         <th>Fecha de aprobado</th>
         <th>Imprimir reporte</th>
+        <th>Firmado</th>
     
     </thead>
 
@@ -65,6 +67,22 @@
                     <button class="btn btn-warning btn-sm">
                         <i class="fas fa-print"></i>
                     </button>
+                <?php
+                }
+                ?>
+            </td>
+
+            <td>
+                <?php if($mostrar['firmaVerificacion'] == 1) { ?>
+                  <button type="button" class="btn btn-danger btn-sm">
+                        <i class="fas fa-question"></i>
+                  </button>
+                <?php
+                } else if($mostrar['firmaVerificacion'] == 2) {
+                ?>
+                  <button type="button" class="btn btn-success btn-sm" >
+                        <i class="fas fa-check"></i>
+                  </button>
                 <?php
                 }
                 ?>

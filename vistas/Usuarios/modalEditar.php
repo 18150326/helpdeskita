@@ -35,13 +35,6 @@
                 <input type="date" class="form-control" id="fechaInu" name="fechaInu" required>
             </div>
             <div class="col-sm-4">
-                <label for="sexou"> Sexo </label>
-                <select class="form-control" name="sexou" id="sexou">
-                    <option value="F">Femenino</option>
-                    <option value="M">Masculino</option>
-                </select>
-            </div>
-            <div class="col-sm-4">
                 <label for="telefonou"> Telefono </label>
                 <input type="text" class="form-control" id="telefonou" name="telefonou" required>
             </div>
@@ -55,6 +48,10 @@
             <div class="col-sm-4">
                 <label for="usuariou"> Usuario </label>
                 <input type="text" class="form-control" id="usuariou" name="usuariou" required>
+            </div>
+            <div class="col-sm-4">
+                <label for="contraseñau"> Contraseña </label>
+                <input type="text" class="form-control" id="contraseñau" name="contraseñau" required>
             </div>
         </div>
 

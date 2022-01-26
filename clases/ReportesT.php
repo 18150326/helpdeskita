@@ -79,7 +79,7 @@
             $sql = "UPDATE
                            t_reportes
                     SET
-                           estado = 2
+                           estado = 3
                     WHERE
                            t_reportes.id_reporte = '$idReporte'";
             $query = mysqli_query($conexion, $sql);

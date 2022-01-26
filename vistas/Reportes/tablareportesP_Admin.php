@@ -15,7 +15,7 @@
                 t_reportes AS reportes
                  INNER JOIN
                 t_usuarios AS usuarios ON usuarios.id_usuario = reportes.id_usuario
-            WHERE reportes.estado = 1";
+            WHERE reportes.estado = 1 OR reportes.estado = 2";
     $respuesta = mysqli_query($conexion1, $sql) or die(mysqli_error($conexion1));
 ?>
 
@@ -54,7 +54,7 @@
 
             <td>
                 <?php if($mostrar['estado' == 1]){?>
-                  <button type="button" class="btn btn-info btn-sm disabled" onclick="generarPDF(<?php echo $mostrar['idReporte']; ?>)">
+                  <button type="button" class="btn btn-success btn-sm" onclick="generarPDF(<?php echo $mostrar['idReporte']; ?>)">
                       <i class="fas fa-print"></i>
                   </button>
                 <?php
@@ -64,8 +64,14 @@
 
             <td>
                 <?php if($mostrar['estado'] == 1) {?>
-                    <button class="btn btn-warning btn-sm disabled" data-toggle="modal">
+                    <button class="btn btn-warning btn-sm" data-toggle="modal">
                         Pendiente
+                    </button>
+                <?php
+                } else if($mostrar['estado'] == 2) {
+                ?>
+                    <button class="btn btn-info btn-sm" data-toggle="modal">
+                        En proceso
                     </button>
                 <?php
                 }

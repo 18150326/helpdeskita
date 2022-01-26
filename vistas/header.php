@@ -59,10 +59,10 @@
           <a class="nav-link" href="usuariosAdmin.php">Usuarios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="reportesP_Admin.php">Reportes Pendientes</a>
+          <a class="nav-link" href="reportesP_Admin.php">Servicios Pendientes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="reportesT_Admin.php">Reportes Terminados</a>
+          <a class="nav-link" href="reportesT_Admin.php">Servicios Terminados</a>
         </li>
         <?php } ?>
 
@@ -108,10 +108,10 @@
         <a class="nav-link" href="usuariosAdmin.php">Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="reportesP_Admin.php">Reportes Pendientes</a>
+        <a class="nav-link" href="reportesP_Admin.php">Servicios Pendientes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="reportesT_Admin.php">Reportes Terminados</a>
+        <a class="nav-link" href="reportesT_Admin.php">Servicios Terminados</a>
       </li>
       <?php } ?>
     </ul>

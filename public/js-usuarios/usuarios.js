@@ -49,12 +49,12 @@ function obtenerDatosUsuario(idUsuario)
             $('#maternou').val(respuesta['ApMaterno']);
             $('#nombreu').val(respuesta['nombrePersona']);
             $('#fechaInu').val(respuesta['fechaAlta']);
-            $('#sexou').val(respuesta['sexo']);
             $('#telefonou').val(respuesta['telefono']);
             $('#correou').val(respuesta['correo']);
             $('#usuariou').val(respuesta['nombreUsuario']);
             $('#idRolu').val(respuesta['idRol']);
             $('#ubicacionu').val(respuesta['ubicacion']);
+            $('#contraseñau').val(respuesta['contraseña']);
         }
 
     });

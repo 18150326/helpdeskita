@@ -6,12 +6,12 @@
         'materno' => $_POST ['maternou'],
         'nombre' => $_POST ['nombreu'],
         'fechaIn' => $_POST ['fechaInu'],
-        'sexo' => $_POST ['sexou'],
         'telefono' => $_POST ['telefonou'],
         'correo' => $_POST ['correou'],
         'usuario' => $_POST ['usuariou'],
         'idRol' => $_POST ['idRolu'],
-        'ubicacion' => $_POST ['ubicacionu']
+        'ubicacion' => $_POST ['ubicacionu'],
+        'contraseña' => $_POST ['contraseñau']
     );
 
     include "../../../clases/Usuarios.php";

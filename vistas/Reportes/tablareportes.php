@@ -51,6 +51,7 @@
         <th>Descripcion</th>
         <th>Estado</th>
         <th>Imprimir reporte terminado</th>
+        <th>¿Reporte Firmado?</th>
 
     </thead>
 
@@ -72,13 +73,13 @@
 
             <td>
                 <?php if($mostrar['estado'] == 1) {?>
-                    <button class="btn btn-warning btn-sm disabled">
+                    <button class="btn btn-warning btn-sm" disabled>
                         Pendiente
                     </button>
                 <?php
                 } else {
                 ?>
-                    <button class="btn btn-info btn-sm disabled">
+                    <button class="btn btn-info btn-sm" disabled>
                         Resuelto
                     </button>
                 <?php
@@ -93,11 +94,27 @@
                 <?php
                 } else {
                 ?>
-                    <button type="button" class="btn btn-warning btn-sm disabled">
+                    <button type="button" class="btn btn-warning btn-sm" disabled>
                         <i class="fas fa-print"></i>
                     </button>
                 <?php
                     }
+                ?>
+            </td>
+
+            <td>
+                <?php if($mostrar['estado'] == 2) { ?>
+                  <button type="button" class="btn btn-info btn-sm">
+                        <i class="fas fa-check"></i>
+                  </button>
+                <?php
+                } else if($mostrar['estado'] == 1) {
+                ?>
+                  <button type="button" class="btn btn-danger btn-sm" disabled>
+                        <i class="fas fa-lock"></i>
+                  </button>
+                <?php
+                }
                 ?>
             </td>
 

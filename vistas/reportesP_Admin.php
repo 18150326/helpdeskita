@@ -9,18 +9,18 @@
 <div class="container">
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
-      <h1 class="fw-light">Reportes Pendientes</h1>
+      <h1 class="fw-light">Servicios Pendientes</h1>
       <p class="lead">
       
         <!--<button class="btn btn-primary" data-toggle="modal" data-target="#modalterminarReporte">
           Terminar reporte
         </button> -->
-        <hr>
+        
         <button class="btn btn-primary" data-toggle="modal" data-target="#modalterminarReporte"
                     onclick="obtenerDatosReporte(<?php echo $mostrar1[0]['idReporte']?>)">
-            Terminar reporte
+            Terminar servicio
         </button>
-
+        <hr>
         <div id="cargartablareportes">
           
         </div>

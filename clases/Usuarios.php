@@ -31,18 +31,15 @@
             $conexion = Conexion::conectar();
             $sql = "INSERT INTO t_persona(paterno, 
                                           materno, 
-                                          nombre,                                            
-                                          sexo, 
+                                          nombre,          
                                           telefono, 
                                           correo, 
                                           fechaInsert)
             VALUES (?, ?, ?,  ?, ?, ?, ?)";
             $query = $conexion->prepare($sql);
-            $query->bind_param("sssssss",  $datos['paterno'],
+            $query->bind_param("ssssss",  $datos['paterno'],
                                              $datos['materno'],
                                              $datos['nombre'],
-                                             
-                                             $datos['sexo'],
                                              $datos['telefono'],
                                              $datos['correo'],
                                              $datos['fechaIn']);
@@ -100,9 +97,9 @@
                             persona.paterno AS ApPaterno,
                             persona.materno AS ApMaterno,
                             persona.fechaInsert AS fechaAlta,
-                            persona.sexo AS sexo,
                             persona.correo AS correo,
-                            persona.telefono AS telefono
+                            persona.telefono AS telefono,
+                            usuarios.password AS contraseña
                     FROM
                             t_usuarios AS usuarios
                         INNER JOIN
@@ -126,9 +123,9 @@
                 'ApPaterno' => $usuario['ApPaterno'],
                 'ApMaterno' => $usuario['ApMaterno'],
                 'fechaAlta' => $usuario['fechaAlta'],
-                'sexo' => $usuario['sexo'],
                 'correo'=> $usuario['correo'],
-                'telefono' => $usuario['telefono']
+                'telefono' => $usuario['telefono'],
+                'contraseña' => $usuario['contraseña']
             );
             return $datos;
         }
@@ -158,17 +155,15 @@
                                          paterno = ?,
                                          materno = ?,
                                          nombre = ?,
-                                         sexo = ?,
                                          telefono = ?,
                                          correo = ?,
                                          fechaInsert = ?
                     WHERE id_persona = $idPersona";
             $query = $conexion->prepare($sql);
-            $query->bind_param('sssssss',                               
+            $query->bind_param('ssssss',                               
                                                 $datos['paterno'],
                                                 $datos['materno'],
                                                 $datos['nombre'],
-                                                $datos['sexo'],
                                                 $datos['telefono'],
                                                 $datos['correo'],
                                                 $datos['fechaIn']);
@@ -186,12 +181,14 @@
             {
                 $sql = "UPDATE t_usuarios SET id_rol = ?,
                                               usuario = ?,
-                                              ubicacion = ?
+                                              ubicacion = ?,
+                                              password = ?
                         WHERE id_usuario = ?";
                 $query = $conexion -> prepare($sql);
-                $query -> bind_param('issi',  $datos['idRol'],
+                $query -> bind_param('isssi',  $datos['idRol'],
                                               $datos['usuario'],
                                               $datos['ubicacion'],
+                                              $datos['contraseña'],
                                               $datos['idUsuario']);
                 $respuesta = $query -> execute();
                 $query -> close();

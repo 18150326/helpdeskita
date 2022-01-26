@@ -14,7 +14,6 @@
                 persona.paterno AS ApPaterno,
                 persona.materno AS ApMaterno,
                 persona.fechaInsert AS fechaAlta,
-                persona.sexo AS sexo,
                 persona.correo AS correo,
                 persona.telefono AS telefono
             FROM
@@ -38,11 +37,8 @@
         <th>Ubicacion</th>
         <th>Correo</th>
         <th>Usuario</th>
-        <th>Sexo</th>
-        <th>Cambiar contraseña</th>
         <th>Estado</th>
         <th>Editar</th>
-        <th>Eliminar</th>
     
     </thead>
 
@@ -62,13 +58,6 @@
             <td><?php echo $mostrar['ubicacion']; ?></td>
             <td><?php echo $mostrar['correo']; ?></td>
             <td><?php echo $mostrar['nombreUsuario']; ?></td>
-            <td><?php echo $mostrar['sexo']; ?></td>
-
-            <td>
-                <button class="btn btn-success btn-sm">
-                    Cambiar contraseña
-                </button>
-            </td>
 
             <td>
                 <?php if($mostrar['estatus'] == 1) {?>
@@ -87,16 +76,21 @@
             </td>
             
             <td>
-                <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEditarUsuarios" 
-                        onclick= "obtenerDatosUsuario(<?php echo $mostrar['idUsuario'] ?>)">
-                    Editar
-                </button>
-            </td>
-            
-            <td>
-                <button class="btn btn-danger btn-sm">
-                    Eliminar
-                </button>
+                <?php if($mostrar['estatus'] ==1 ){?>
+                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEditarUsuarios" 
+                            onclick= "obtenerDatosUsuario(<?php echo $mostrar['idUsuario'] ?>)">
+                        Editar
+                    </button>
+                <?php
+                } else {
+                ?>
+                    <button class="btn btn-warning btn-sm" disabled>
+                        Editar
+                    </button>
+                <?php
+                }
+                ?>
+
             </td>
         
         </tr>
