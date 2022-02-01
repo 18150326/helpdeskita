@@ -2,11 +2,6 @@ body{
 	list-style-type: none;
 }
 
-.navbar{
-	padding-right: 18%;
-	padding-left: 18%;
-}
-
 #button-crear_reportes{
 	margin-bottom: 20px;
 }
