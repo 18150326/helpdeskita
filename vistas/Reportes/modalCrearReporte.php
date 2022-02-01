@@ -12,7 +12,7 @@
       </div>
       <div class="modal-body">
         
-        <input type="text" id="idUsuario" name="idUsuario">
+        <input type="text" id="idUsuario" name="idUsuario" class="d-none">
         <!-- Formulario en modal -->
         <div class="row">
             
@@ -20,11 +20,11 @@
                 <label for="areaSolicitante"> Area Solicitante </label>
                 <input type="text" class="form-control" id="areaSolicitante" name="areaSolicitante" required>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-7">
                 <label for="nombreSolicitante"> Nombre del solicitante </label>
                 <input type="text" class="form-control" id="nombreSolicitante" name="nombreSolicitante" required>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-5" style="margin-top: 10px">
                 <label for="fechaElaboracion"> Fecha de elaboracion </label>
                 <input type="date" class="form-control" id="fechaElaboracion" name="fechaElaboracion" required>
             </div>

@@ -33,6 +33,7 @@
         <th>Descripcion</th>
         <th>Imprimir reporte de solicitud</th>
         <th>Estado</th>
+        <th>Terminar reporte</th>
 
     </thead>
 
@@ -77,7 +78,11 @@
                 }
                 ?>
             </td>
-
+            <td>
+                <button class="btn btn-primary btn-sm" onclick="terminarReporte(<?php echo $mostrar['idReporte'];?>)">
+                    <i class="fas fa-check"></i>
+                </button>
+            </td>
 
         </tr>
 
@@ -93,4 +98,9 @@
     $(document).ready(function(){
        $('#tablaReportesAdminDataTable').DataTable();
     });
+
+    function terminarReporte (id) {
+        document.getElementById("idReporte").value = id;
+        $('#modalterminarReporte').modal('show');
+    }
 </script>

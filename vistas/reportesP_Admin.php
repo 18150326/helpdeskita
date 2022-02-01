@@ -19,11 +19,7 @@
         <!--<button class="btn btn-primary" data-toggle="modal" data-target="#modalterminarReporte">
           Terminar reporte
         </button> -->
-        
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalterminarReporte"
-                    onclick="obtenerDatosReporte(<?php echo $mostrar1[0]['idReporte']?>)">
-            Terminar servicio
-        </button>
+                
         <hr>
         <div id="cargartablareportes">
           

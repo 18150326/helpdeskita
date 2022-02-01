@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <label for="idReporte"> ID reporte </label>
-                <input type="text" class="form-control" id="idReporte" name="idReporte" required>
+                <input type="text" class="form-control" id="idReporte" name="idReporte" required disabled>
             </div>
             
             <div class="col-sm-5">
