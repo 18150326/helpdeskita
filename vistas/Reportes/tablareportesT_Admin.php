@@ -2,6 +2,7 @@
     include "../../clases/conexion.php";
     $con = new conexion();
     $conexion1 = $con->conectar();
+    
     $sql = "SELECT 
                         reportes.id_reporte AS idReporte,
                         reportes.estado AS estado,

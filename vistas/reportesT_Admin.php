@@ -18,6 +18,20 @@
       <p class="lead">
       
         <hr>
+        <div class="row">
+            
+            <div class="col-sm-3">
+                <label for="fechaElaboracion"> Desde </label>
+                <input type="date" class="form-control" id="fecha-desde" name="fechaElaboracion" required>
+            </div>
+            <div class="col-sm-3">
+                <label for="fechaElaboracion"> Hasta </label>
+                <input type="date" class="form-control" id="fecha-hasta" name="fechaElaboracion" required>
+            </div>
+        </div>
+        
+        <button type="button" class="btn btn-primary" id="button-buscar" style="margin-top: 15px">Buscar</button>
+        <hr>
         <div id="cargartablareportes">
           
         </div>
@@ -47,6 +61,12 @@
       loadingSpinner.classList.add('d-none');
     }, 1000);
 
+  });
+
+  document.getElementById("button-buscar").addEventListener("click", function (e) {
+    var desde = document.getElementById("fecha-desde").value;
+    var hasta = document.getElementById("fecha-hasta").value;
+    alert(desde+"________"+hasta);
   });
 
 </script>
