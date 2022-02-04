@@ -1,11 +1,11 @@
-<form id="frmterminarReporte" method="POST" onsubmit="return terminarReporte()" onsubmit="return actualizarEstadoReporte()">
+<form id="frmterminarReporte" method="POST" onsubmit="return terminarReporte()">
 
 <!-- Modal Agregar -->
 <div class="modal fade" id="modalterminarReporte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Asignar o terminar un reporte</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Terminar un reporte</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <label for="idReporte"> ID reporte </label>
-                <input type="text" class="form-control" id="idReporte" name="idReporte" required disabled>
+                <input type="text" class="form-control" id="idReporte" name="idReporte" required >
             </div>
             
             <div class="col-sm-5">

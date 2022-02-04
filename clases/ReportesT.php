@@ -73,19 +73,6 @@
         }
 
 
-        public function actualizarEstadoReporte($datos)
-        {
-            $conexion = Conexcion::conectar();
-            $sql = "UPDATE
-                           t_reportes
-                    SET
-                           estado = 3
-                    WHERE
-                           t_reportes.id_reporte = '$idReporte'";
-            $query = mysqli_query($conexion, $sql);
-            $respuesta = $query->execute();
-            return $respuesta;
-        }
 
     }
 
