@@ -4,6 +4,7 @@
     include "../../../clases/Reportes.php";
     $Reportes = new Reportes();
 
+
     echo json_encode($Reportes -> obtenerDatosReporte($idReporte));
 
 ?>

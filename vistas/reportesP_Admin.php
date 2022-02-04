@@ -41,12 +41,12 @@
 
 <script src="../public/js-usuarios/reportesP_Admin.js"></script>
 
-
+<!--
 <script>
   $(document).ready(function(){
       $('#tablaReportesAdminDatatable').Datatable({
           language : {
-              url . "../public/datatable/es_es.json"
+              url : "../public/datatable/es_es.json"
           },
           dom: 'Bfrtip',
           buttons: [
@@ -54,7 +54,7 @@
           ]
       });
   })
-</script>
+</script> -->
 
 <!-- Evento para desaparecer el loader -->
 <script>

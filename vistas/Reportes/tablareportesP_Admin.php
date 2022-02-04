@@ -79,7 +79,7 @@
                 ?>
             </td>
             <td>
-                <button class="btn btn-primary btn-sm" onclick="terminarReporte(<?php echo $mostrar['idReporte'];?>)">
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalterminarReporte" onclick="terminarReporte(<?php echo $mostrar['idReporte'];?>)">
                     <i class="fas fa-check"></i>
                 </button>
             </td>
