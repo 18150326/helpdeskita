@@ -31,6 +31,9 @@
         </div>
         
         <button type="button" class="btn btn-primary" id="button-buscar" style="margin-top: 15px">Buscar</button>
+        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Limpiar" style="margin-top: 15px" id="button-limpiar">
+          <i class="fas fa-eraser"></i>
+        </button>
         <hr>
         <div id="cargartablareportes">
           
@@ -66,7 +69,24 @@
   document.getElementById("button-buscar").addEventListener("click", function (e) {
     var desde = document.getElementById("fecha-desde").value;
     var hasta = document.getElementById("fecha-hasta").value;
-    alert(desde+"________"+hasta);
+    // alert(desde+"________"+hasta);
+    if(!desde  || !hasta ){
+        Swal.fire("Operación no realizada","Ambos campos de fecha deben ser llenados", "error");
+        // console.log("Un input está vacio");
+    }else{
+        $('#cargartablareportes').load("Reportes/tablareportesT_Admin.php?desde="+desde+"&hasta="+hasta);         
+    }
+    
+  });
+
+  document.getElementById("button-limpiar").addEventListener("click", function (e) {
+    document.getElementById("fecha-desde").value = "";
+    document.getElementById("fecha-hasta").value = "";
+    var desde = "";
+    var hasta = "";
+    // alert(desde+"________"+hasta);
+    $('#cargartablareportes').load("Reportes/tablareportesT_Admin.php?desde="+desde+"&hasta="+hasta);
+    
   });
 
 </script>

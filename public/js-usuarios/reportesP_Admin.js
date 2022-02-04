@@ -28,6 +28,5 @@ function terminarReporte()
 
     });
     
-
     return false;
 }

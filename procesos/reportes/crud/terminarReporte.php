@@ -1,5 +1,4 @@
 <?php
-    
     $datos= array(
        "idReporte" => $_POST['idReporte'],
        "id_mantenimiento" => $_POST['mantenimiento'],
@@ -25,10 +24,11 @@
         "aprobado" => "a",
         "fecha_aprobado" => "a"
      );*/
-print_r ($datos);
+    // echo json_encode($datos);
 
     include "../../../clases/ReportesT.php";
     $Reportes = new ReportesT();
-    echo $Reportes->terminarReporte($datos);
+    // echo $Reportes->terminarReporte($datos);
+    echo json_encode($Reportes->terminarReporte($datos));
 
 ?>

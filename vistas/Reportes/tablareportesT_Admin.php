@@ -1,28 +1,64 @@
 <?php
-    include "../../clases/conexion.php";
-    $con = new conexion();
-    $conexion1 = $con->conectar();
-    
-    $sql = "SELECT 
-                        reportes.id_reporte AS idReporte,
-                        reportes.estado AS estado,
-                        mantenimiento.descripcion AS mantenimiento,
-                        finalizados.tipo_servicio AS tipoServicio,
-                        finalizados.asignado AS asignado,
-                        finalizados.fecha_realizacion AS fechaRealizacion,
-                        finalizados.trabajo_realizado AS trabajoRealizado,
-                        finalizados.verificado_liberado AS verificadoLiberado,
-                        finalizados.fecha_verificado AS fechaVerificado,
-                        finalizados.aprobado AS aprobado,
-                        finalizados.fecha_aprobado AS fechaAprobado,
-                        finalizados.firma_verificacion AS firmaVerificacion
+include "../../clases/conexion.php";
+$con = new conexion();
+$conexion1 = $con->conectar();
+
+// Iniciamos las variables para filtrar las fechas
+$desde = $_GET['desde'];
+$hasta = $_GET['hasta'];
+$sql= "";
+
+if ($desde != "" && $hasta != "")
+{
+     $sql = "SELECT
+            reportes.id_reporte AS idReporte,
+            reportes.estado AS estado,
+            mantenimiento.descripcion AS mantenimiento,
+            finalizados.tipo_servicio AS tipoServicio,
+            finalizados.asignado AS asignado,
+            finalizados.fecha_realizacion AS fechaRealizacion,
+            finalizados.trabajo_realizado AS trabajoRealizado,
+            finalizados.verificado_liberado AS verificadoLiberado,
+            finalizados.fecha_verificado AS fechaVerificado,
+            finalizados.aprobado AS aprobado,
+            finalizados.fecha_aprobado AS fechaAprobado,
+            finalizados.firma_verificacion AS firmaVerificacion
             FROM
-                t_reportes AS reportes
-                 INNER JOIN
-                t_reportes_finalizados AS finalizados ON finalizados.id_reporte = reportes.id_reporte
-                 INNER JOIN
-                t_cat_mantenimiento AS mantenimiento ON finalizados.id_mantenimiento = mantenimiento.id_mantenimiento";
-    $respuesta = mysqli_query($conexion1, $sql) or die(mysqli_error($conexion1));
+            t_reportes AS reportes
+            INNER JOIN
+            t_reportes_finalizados AS finalizados ON finalizados.id_reporte = reportes.id_reporte
+            INNER JOIN
+            t_cat_mantenimiento AS mantenimiento ON finalizados.id_mantenimiento = mantenimiento.id_mantenimiento
+            WHERE finalizados.fecha_realizacion BETWEEN '$desde' AND '$hasta'";
+}
+else
+{
+    $sql = "SELECT
+            reportes.id_reporte AS idReporte,
+            reportes.estado AS estado,
+            mantenimiento.descripcion AS mantenimiento,
+            finalizados.tipo_servicio AS tipoServicio,
+            finalizados.asignado AS asignado,
+            finalizados.fecha_realizacion AS fechaRealizacion,
+            finalizados.trabajo_realizado AS trabajoRealizado,
+            finalizados.verificado_liberado AS verificadoLiberado,
+            finalizados.fecha_verificado AS fechaVerificado,
+            finalizados.aprobado AS aprobado,
+            finalizados.fecha_aprobado AS fechaAprobado,
+            finalizados.firma_verificacion AS firmaVerificacion
+            FROM
+            t_reportes AS reportes
+            INNER JOIN
+            t_reportes_finalizados AS finalizados ON finalizados.id_reporte = reportes.id_reporte
+            INNER JOIN
+            t_cat_mantenimiento AS mantenimiento ON finalizados.id_mantenimiento = mantenimiento.id_mantenimiento";
+
+}
+$respuesta = mysqli_query($conexion1, $sql) or die(mysqli_error($conexion1));
+// echo $sql;
+/*if ($respuesta) {
+    echo "se ejecutó correctamente";
+}*/
 ?>
 
 <table class="table table-sm dt-responsive nowrap" id="tablaReportesAdminDataTable" style="width:100%">

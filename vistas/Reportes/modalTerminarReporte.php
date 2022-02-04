@@ -74,10 +74,33 @@
       </div>
       <div class="modal-footer">
         <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
-        <button class="btn btn-primary">Terminar reporte</button>
+        <a class="btn btn-primary" href="#" id="button-terminar_reporte">Terminar reporte</a>
       </div>
     </div>
   </div>
 </div>
 
 </form>
+
+<script>
+    document.getElementById("button-terminar_reporte").addEventListener("click", async function (e) {
+        // Convertimos la información del formulario en un dataForm para leerlo en json
+        const form = document.getElementById("frmterminarReporte");
+        const dataForm = new FormData(form);
+
+        // Posteriormente madaremos la información por medio de fetch
+        const res = await fetch("../procesos/reportes/crud/terminarReporte.php",{        
+            method: "POST",
+            body: dataForm
+        });        
+
+        const data = await res.json();
+        if(data == 1){
+            Swal.fire("Operación realizada","¡Reporte terminado! ","success");
+            $('#cargartablareportes').load("Reportes/tablareportesP_Admin.php");
+        }else{
+            Swal.fire("Operación no realizada","Error al realizar el reporte", "error");
+        }
+
+    })
+</script>
