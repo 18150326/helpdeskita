@@ -60,7 +60,6 @@ $respuesta = mysqli_query($conexion1, $sql) or die(mysqli_error($conexion1));
     echo "se ejecutó correctamente";
 }*/
 ?>
-
 <table class="table table-sm dt-responsive nowrap" id="tablaReportesAdminDataTable" style="width:100%">
 
     <thead>
@@ -84,6 +83,12 @@ $respuesta = mysqli_query($conexion1, $sql) or die(mysqli_error($conexion1));
         
         <?php
             while($mostrar = mysqli_fetch_array($respuesta)){
+                $trabajoRealizado = "";
+                if(strlen($mostrar['trabajoRealizado']) > 25){
+                    $trabajoRealizado = substr($mostrar['trabajoRealizado'], 0, 25)."...";
+                }else{
+                    $trabajoRealizado = $mostrar['trabajoRealizado'];
+                }
         ?>
 
         <tr>
@@ -93,7 +98,7 @@ $respuesta = mysqli_query($conexion1, $sql) or die(mysqli_error($conexion1));
             <td><?php echo $mostrar['tipoServicio']; ?></td>
             <td><?php echo $mostrar['asignado']; ?></td>
             <td><?php echo $mostrar['fechaRealizacion']; ?></td>
-            <td><?php echo $mostrar['trabajoRealizado']; ?></td>
+            <td><?php echo $trabajoRealizado; ?></td>
             <td><?php echo $mostrar['verificadoLiberado']; ?></td>
             <td><?php echo $mostrar['fechaVerificado']; ?></td>
             <td><?php echo $mostrar['aprobado']; ?></td>

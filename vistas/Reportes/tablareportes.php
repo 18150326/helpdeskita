@@ -59,6 +59,11 @@
 
         <?php
             foreach ($respuestaArray as $mostrar) {
+                if(strlen($mostrar['descripcion']) > 25){
+                    $descripcion = substr($mostrar['descripcion'], 0, 25)."...";
+                }else{
+                    $descripcion = $mostrar['descripcion'];
+                }
         ?>
 
         <tr>
@@ -69,7 +74,7 @@
             <td><?php echo $mostrar['areaSolicitante']; ?></td>
             <td><?php echo $mostrar['nombreSolicitante']; ?></td>
             <td><?php echo $mostrar['fechaElaboracion']; ?></td>
-            <td><?php echo $mostrar['descripcion']; ?></td>
+            <td><?php echo $descripcion; ?></td>
 
             <td>
                 <?php if($mostrar['estado'] == 1) {?>
