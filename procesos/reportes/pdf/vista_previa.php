@@ -1,5 +1,11 @@
 <?php
-$reporte = $_GET['reporte'];
+$reporte ="";
+
+if(!isset($_GET['reporte'])){
+		header("location:../../../vistas/inicio.php");
+}else{
+	$reporte = $_GET['reporte'];
+}
 
 date_default_timezone_set("America/Mexico_City");
 $hoy = date('Y-m-d G:i:s', time());
@@ -27,6 +33,10 @@ $datosReporte = array();
 
 while($row = mysqli_fetch_assoc($resultado)){
 	$datosReporte[] = $row;
+}
+
+if(count($datosReporte)==0){
+	header("location:../../../vistas/inicio.php");
 }
 
 $html = '
@@ -105,72 +115,11 @@ $html = '
 </html>
 ';
 
-$html_page2='
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-</head>
-<body>
-	 <table class="table_footer">
-	    <tr>
-	        <td rowspan="3"><img src="logoITA.png" with="100px" height="75px" class="logo_ita_header"></td>
-	        <td><strong>Nombre del Documento: Formato para  Solicitud de Mantenimiento Correctivo</strong></td>
-	        <td><strong>Código: ITA- AD-PO-001-02</strong></td>
-	    </tr>
-	    <tr>
-	        <td rowspan="2"><strong>Referencia a la Norma ISO 9001:2015 6.1, 7.1, 7.2, 7.4, 7.5.1, 8.1</strong></td>
-	        <td><strong>Revisión: 0</strong></td>
-	    </tr>
-	    <tr>
-	        <td><strong>Página 2 de 2</strong></td>
-	    </tr>
-	</table>
-
-	<p class="titulo"><strong>INSTRUCTIVO DE LLENADO</strong></p>
-
-	<table class="tabla_instructivo">
-		<tr>
-	        <td><strong>Número</strong></td>
-	        <td><strong>Descripción</strong></td>
-	    </tr>
-	    <tr>
-	        <td >0</td>
-	        <td>Marcar con una <strong>X</strong> el Departamento a quien se dirige la solicitud</td>
-	    </tr>
-	    <tr>
-	        <td >1</td>
-	        <td>El Departamento a quien va dirigida la solicitud asigna número de folio a la solicitud recibida.</td>
-	    </tr>
-	    <tr>
-	        <td >2</td>
-	        <td>El solicitante anota nombre del área correspondiente, (Dirección, Subdirección, Departamento ó División). La solicitud puede ser llenada por cualquier trabajador de la institución.</td>
-	    </tr>
-	    <tr>
-	        <td >3</td>
-	        <td>El Jefe del área anota su nombre y firma en la solicitud de mantenimiento.</td>
-	    </tr>
-	</table>
-	<p class="titulo">SOLICITUD MANTENIMIENTO CORRECTIVO</p>
-</body>
-</html>
-';
-
-// Indicamos la ruta del archivo css en el cual trabajaremos.
-//$css = file_get_contents('styles.css');
-
-
 // Create an instance of the class:
 $mpdf = new \Mpdf\Mpdf();
 
 // Añadimos el html de la primera página
 $mpdf->WriteHTML($html);
-// Añadimos una nueva página
-$mpdf->AddPage();
-// Añadimos el html de la segunda página
-$mpdf->WriteHTML($html_page2);
 // Agregamos el footer
 $mpdf->SetHTMLFooter('
 <table width="100%" class="footer">
