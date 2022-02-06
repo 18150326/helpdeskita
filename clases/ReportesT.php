@@ -29,6 +29,15 @@
             }
         }
 
+
+        public function CambiarEstado($datos)
+        {
+          $conexion = Conexion::conectar();
+          $sql = "UPDATE t_reportes SET estado = 2
+          WHERE id_reporte = '".$datos['idReporte']."'";
+          $resultado = mysqli_query($conexion,$sql);
+        }
+
     }
 
 ?>

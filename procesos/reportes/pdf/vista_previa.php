@@ -18,11 +18,11 @@ $password = "88bFiBTpsfGsC3WbaBaT";
 $db = "b1o04dzhm1guhvmjcrwb";
 $conexion = mysqli_connect($servidor,$usuario,$password,$db);
 
-$consulta = "SELECT trf.id_reporte, trf.trabajo_realizado, tp.nombre, tr.area_solicitante, tr.fecha_elaboracion FROM t_reportes_finalizados trf
-	  INNER JOIN t_reportes tr on tr.id_reporte = trf.id_reporte
-    INNER JOIN t_usuarios tu on tr.id_usuario = tu.id_usuario
-    INNER JOIN t_persona tp on tp.id_persona = tu.id_persona
-		WHERE trf.id_reporte = '$reporte'";
+$consulta = "SELECT tr.id_reporte, tp.nombre, tr.area_solicitante, tr.fecha_elaboracion, tr.descripcion
+			 FROM t_reportes tr 
+			 INNER JOIN t_usuarios tu on tr.id_usuario = tu.id_usuario 
+			 INNER JOIN t_persona tp on tp.id_persona = tu.id_persona 
+			 WHERE tr.id_reporte = '$reporte'";
 $resultado = mysqli_query($conexion, $consulta);
 
 // if($resultado){
@@ -101,7 +101,7 @@ $html = '
 	        <td ><strong>Fecha de Elaboración:</strong> '.$datosReporte[0]["fecha_elaboracion"].'</td>
 	    </tr>
 	    <tr>
-					<td ><br><strong>Descripción del servicio solicitado o falla a reparar:</strong> <p><br>'.$datosReporte[0]["trabajo_realizado"].'</p></td>
+					<td ><br><strong>Descripción del servicio solicitado o falla a reparar:</strong> <p><br>'.$datosReporte[0]["descripcion"].'</p></td>
 					<br>
 	    </tr>
 
@@ -132,6 +132,7 @@ $mpdf->SetHTMLFooter('
 // Agregamos los estilos css con la variable anteriormente cargada con la ruta del archivo
 //$mpdf -> WriteHTML($css,1);
 // Output a PDF file directly to the browser
-$mpdf->Output();
+$mpdf->SetTitle("Servicio_Pendiente_".$reporte);
+$mpdf->Output("Servicio_Pendiente_".$reporte.".pdf","I");
 
 ?>

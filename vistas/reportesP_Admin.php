@@ -30,6 +30,7 @@
 </div>
 
 <?php 
+    include "Reportes/modalCambiarEstado.php";
     include "Reportes/modalTerminarReporte.php"; 
     include "footer.php";
   }else

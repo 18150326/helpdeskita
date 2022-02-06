@@ -92,8 +92,8 @@
                 ?>
             </td>
             <td>
-                <?php if($mostrar['estado'] == 2) {?>
-                  <button type="button" class="btn btn-info btn-sm" onclick="generarPDF(<?php echo $mostrar['idReporte']; ?>)">
+                <?php if($mostrar['estado'] == 3) {?>
+                  <button type="button" class="btn btn-info btn-sm" onclick="generarPDF2(<?php echo $mostrar['idReporte']; ?>)">
                       <i class="fas fa-print"></i>
                   </button>
                 <?php
@@ -108,12 +108,12 @@
             </td>
 
             <td>
-                <?php if($mostrar['estado'] == 2) { ?>
-                  <button type="button" class="btn btn-info btn-sm">
+                <?php if($mostrar['estado'] == 3) { ?>
+                  <button type="button" class="btn btn-info btn-sm" onclick="firmarReporte(<?php echo $mostrar['idReporte']?>)">
                         <i class="fas fa-check"></i>
                   </button>
                 <?php
-                } else if($mostrar['estado'] == 1) {
+                } else {
                 ?>
                   <button type="button" class="btn btn-danger btn-sm" disabled>
                         <i class="fas fa-lock"></i>
@@ -137,4 +137,16 @@
     $(document).ready(function(){
        $('#tablaReportesDataTable').DataTable();
     });
+
+    function firmarReporte(id)
+    {
+        document.getElementById("idReporteF").value=id;
+        $('#modalFirmarReporte').modal('show');
+    }
+
+    function generarPDF2(id)
+    {
+        //alert(id);
+        window.open("../procesos/reportes/pdf/vista_previa_02.php?reporte="+id);
+    }
 </script>
