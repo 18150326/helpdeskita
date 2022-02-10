@@ -4,8 +4,13 @@ $con = new conexion();
 $conexion1 = $con->conectar();
 
 // Iniciamos las variables para filtrar las fechas
-$desde = $_GET['desde'];
-$hasta = $_GET['hasta'];
+$desde="";
+$hasta="";
+if(isset($_GET['desde']) && isset($_GET['hasta'])){
+    $desde = $_GET['desde'];
+    $hasta = $_GET['hasta'];
+}
+
 $sql= "";
 
 if ($desde != "" && $hasta != "")
@@ -45,13 +50,17 @@ else
             finalizados.fecha_verificado AS fechaVerificado,
             finalizados.aprobado AS aprobado,
             finalizados.fecha_aprobado AS fechaAprobado,
-            finalizados.firma_verificacion AS firmaVerificacion
+            finalizados.firma_verificacion AS firmaVerificacion,
+            encargados.nombre AS nombreEncargado,
+            finalizados.documento_recogido AS recogido
             FROM
             t_reportes AS reportes
             INNER JOIN
             t_reportes_finalizados AS finalizados ON finalizados.id_reporte = reportes.id_reporte
             INNER JOIN
-            t_cat_mantenimiento AS mantenimiento ON finalizados.id_mantenimiento = mantenimiento.id_mantenimiento";
+            t_cat_mantenimiento AS mantenimiento ON finalizados.id_mantenimiento = mantenimiento.id_mantenimiento
+            INNER JOIN
+            t_encargados AS encargados ON finalizados.aprobado = encargados.id_encargado";
 
 }
 $respuesta = mysqli_query($conexion1, $sql) or die(mysqli_error($conexion1));
@@ -76,6 +85,7 @@ $respuesta = mysqli_query($conexion1, $sql) or die(mysqli_error($conexion1));
         <th>Fecha de aprobado</th>
         <th>Imprimir reporte</th>
         <th>Firmado</th>
+        <th>¿Reporte recogido?</th>
     
     </thead>
 
@@ -101,12 +111,12 @@ $respuesta = mysqli_query($conexion1, $sql) or die(mysqli_error($conexion1));
             <td><?php echo $trabajoRealizado; ?></td>
             <td><?php echo $mostrar['verificadoLiberado']; ?></td>
             <td><?php echo $mostrar['fechaVerificado']; ?></td>
-            <td><?php echo $mostrar['aprobado']; ?></td>
+            <td><?php echo $mostrar['nombreEncargado']; ?></td>
             <td><?php echo $mostrar['fechaAprobado']; ?></td>
             
             <td>
-                <?php if($mostrar['estado' == 2]){?>
-                    <button class="btn btn-warning btn-sm">
+                <?php if($mostrar['estado' == 3]){?>
+                    <button class="btn btn-warning btn-sm" onclick="generarPDF2(<?php echo $mostrar['idReporte'];?>)">
                         <i class="fas fa-print"></i>
                     </button>
                 <?php
@@ -116,18 +126,40 @@ $respuesta = mysqli_query($conexion1, $sql) or die(mysqli_error($conexion1));
 
             <td>
                 <?php if($mostrar['firmaVerificacion'] == 1) { ?>
-                  <button type="button" class="btn btn-danger btn-sm">
+                  <button type="button" class="btn btn-danger btn-sm" disabled>
                         <i class="fas fa-question"></i>
                   </button>
                 <?php
                 } else if($mostrar['firmaVerificacion'] == 2) {
                 ?>
-                  <button type="button" class="btn btn-success btn-sm" >
+                  <button type="button" class="btn btn-success btn-sm" disabled>
                         <i class="fas fa-check"></i>
                   </button>
                 <?php
                 }
                 ?>
+            </td>
+
+            <td>
+                <?php if($mostrar['recogido'] == 1 && $mostrar['firmaVerificacion'] == 1) { ?>
+                  <button type="button" class="btn btn-danger btn-sm" disabled>
+                        <i class="fas fa-times"></i>
+                  </button>
+                <?php
+                } else if($mostrar['recogido'] == 1 && $mostrar['firmaVerificacion'] == 2) {
+                ?>
+                  <button type="button" class="btn btn-info btn-sm" onclick= "RecogerReporte(<?php echo $mostrar['idReporte'];?>)">
+                        <i class="fas fa-check"></i>
+                  </button>
+                <?php
+                } else {
+                ?>
+                  <button type="button" class="btn btn-success btn-sm" disabled>
+                        <i class="fas fa-check"></i>
+                  </button>
+                  <?php 
+                  }
+                  ?>
             </td>
             
         
@@ -145,4 +177,12 @@ $respuesta = mysqli_query($conexion1, $sql) or die(mysqli_error($conexion1));
     $(document).ready(function(){
        $('#tablaReportesAdminDataTable').DataTable(); 
     });
+    function generarPDF2(id)
+    {
+        window.open("../procesos/reportes/pdf/vista_previa_02.php?reporte="+id);
+    }
+    function RecogerReporte (id) {
+        document.getElementById("idReporteR").value = id;
+        $('#modalRecoger').modal('show');
+    }
 </script>

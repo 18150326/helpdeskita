@@ -69,6 +69,24 @@
         }
 
 
+        public function FirmarReporte($datos)
+        {
+          $conexion = Conexion::conectar();
+          $sql ="UPDATE t_reportes_finalizados
+                 SET firma_verificacion = 2 
+                 WHERE id_reporte = '".$datos['idReporte']."' ";
+          $resultado = mysqli_query($conexion, $sql);
+          if($resultado)
+          {
+            return 1;
+          }
+          else{
+            return 0;
+          }
+          //return $sql;
+        }
+
+
     }
 
         

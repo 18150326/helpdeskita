@@ -34,6 +34,7 @@
 
 
 <?php
+  include "Reportes/modalFirmarReporte.php";
   include "Reportes/modalCrearReporte.php";
   include "footer.php";
 ?>
@@ -53,7 +54,7 @@
 
 </script>
 
-<script src="../procesos/reportes/pdf/generar-pdf-script.js"></script>
+
 
 <?php
 

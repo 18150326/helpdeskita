@@ -18,24 +18,28 @@ $db = "b1o04dzhm1guhvmjcrwb";
 $conexion = mysqli_connect($servidor,$usuario,$password,$db);
 
 $consulta = "SELECT
-            reportes.id_reporte AS idReporte,
-            reportes.estado AS estado,
-            finalizados.id_mantenimiento AS mantenimiento,
-            finalizados.tipo_servicio AS tipoServicio,
-            finalizados.asignado AS asignado,
-            finalizados.fecha_realizacion AS fechaRealizacion,
-            finalizados.trabajo_realizado AS trabajoRealizado,
-            finalizados.verificado_liberado AS verificadoLiberado,
-            finalizados.fecha_verificado AS fechaVerificado,
-            finalizados.aprobado AS aprobado,
-            finalizados.fecha_aprobado AS fechaAprobado
-            FROM
-            t_reportes AS reportes
-            INNER JOIN
-            t_reportes_finalizados AS finalizados ON finalizados.id_reporte = reportes.id_reporte
-            INNER JOIN
-            t_cat_mantenimiento AS mantenimiento ON finalizados.id_mantenimiento = mantenimiento.id_mantenimiento
-            Where reportes.id_reporte = '$reporte'";
+                  reportes.id_reporte AS idReporte,
+                  reportes.estado AS estado,
+                  finalizados.id_mantenimiento AS mantenimiento,
+                  finalizados.tipo_servicio AS tipoServicio,
+                  finalizados.asignado AS asignado,
+                  finalizados.fecha_realizacion AS fechaRealizacion,
+                  finalizados.trabajo_realizado AS trabajoRealizado,
+                  finalizados.verificado_liberado AS verificadoLiberado,
+                  finalizados.fecha_verificado AS fechaVerificado,
+                  finalizados.aprobado AS aprobado,
+                  finalizados.fecha_aprobado AS fechaAprobado,
+                  encargados.nombre AS nombreEncargado
+                  FROM
+                  t_reportes AS reportes
+                  INNER JOIN
+                  t_reportes_finalizados AS finalizados ON finalizados.id_reporte = reportes.id_reporte
+                  INNER JOIN
+                  t_cat_mantenimiento AS mantenimiento ON finalizados.id_mantenimiento = mantenimiento.id_mantenimiento
+                  INNER JOIN
+                  t_encargados AS encargados ON finalizados.aprobado = encargados.id_encargado
+                  Where reportes.id_reporte = '$reporte'
+                  LIMIT 1";
 
 $resultado = mysqli_query($conexion,$consulta);
 
@@ -109,19 +113,19 @@ $html = '
 
  <tr>
 
- <td colspan=2><br><strong>Trabajo Realizado:</strong>'.$datosReporte[0]['trabajoRealizado'].'</td>
+ <td colspan=2><br><strong>Trabajo Realizado: </strong>'.$datosReporte[0]['trabajoRealizado'].'</td>
 
  <br>
  <br>
  </tr>
 
  <tr>
- <td ><strong>Verificado y Liberado por:</strong>'.$datosReporte[0]['verificadoLiberado'].'</td>
- <td ><strong>Fecha y Firma:</strong>'.$datosReporte[0]['fechaVerificado'].'</td>
+ <td ><strong>Verificado y Liberado por: </strong>'.$datosReporte[0]['verificadoLiberado'].'</td>
+ <td ><strong>Fecha y Firma: </strong>'.$datosReporte[0]['fechaVerificado'].'</td>
  </tr>
  <tr>
- <td ><strong>Aprobado por: </strong>'.$datosReporte[0]['aprobado'].'</td>
- <td ><strong>Fecha y Firma:</strong>'.$datosReporte[0]['fechaAprobado'].'</td>
+ <td ><strong>Aprobado por: </strong>'.$datosReporte[0]['nombreEncargado'].'</td>
+ <td ><strong>Fecha y Firma: </strong>'.$datosReporte[0]['fechaAprobado'].'</td>
  </tr>
 
 
@@ -159,5 +163,6 @@ $mpdf->SetHTMLFooter('
 // Agregamos los estilos css con la variable anteriormente cargada con la ruta del archivo
 //$mpdf -> WriteHTML($css,1);
 // Output a PDF file directly to the browser
-$mpdf->Output();
+$mpdf->SetTitle("Servicio_Terminado_".$reporte);
+$mpdf->Output("Servicio_Terminado_".$reporte.".pdf","I");
 ?>

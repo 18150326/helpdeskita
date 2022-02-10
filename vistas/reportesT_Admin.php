@@ -44,6 +44,7 @@
 </div>
 
 <?php 
+    include "Reportes/modalRecogerReporte.php";
     include "Reportes/modalTerminarReporte.php"; 
     include "footer.php";
   }else
