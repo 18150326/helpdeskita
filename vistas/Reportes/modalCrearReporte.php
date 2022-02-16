@@ -11,11 +11,11 @@
         </button>
       </div>
       <div class="modal-body">
-        
+
         <input type="text" id="idUsuario" name="idUsuario" class="d-none">
         <!-- Formulario en modal -->
         <div class="row">
-            
+
             <div class="col-sm-4">
                 <label for="areaSolicitante"> Area Solicitante </label>
                 <input type="text" class="form-control" id="areaSolicitante" name="areaSolicitante" required>

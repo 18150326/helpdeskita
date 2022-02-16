@@ -28,7 +28,7 @@ function agregarNuevoUsuario()
         }
 
     });
-    
+
 
     return false;
 }
@@ -36,14 +36,14 @@ function agregarNuevoUsuario()
 function obtenerDatosUsuario(idUsuario)
 {
     $.ajax({
-    
+
         type: "POST",
         data: "idUsuario=" + idUsuario,
         url: "../procesos/usuarios/crud/obtenerDatosUsuario.php",
         success:function(respuesta)
         {
             respuesta = jQuery.parseJSON(respuesta);
-            //console.log(respuesta);
+            console.log(respuesta);
             $('#idUsuario').val(respuesta['idUsuario']);
             $('#paternou').val(respuesta['ApPaterno']);
             $('#maternou').val(respuesta['ApMaterno']);
@@ -54,7 +54,7 @@ function obtenerDatosUsuario(idUsuario)
             $('#usuariou').val(respuesta['nombreUsuario']);
             $('#idRolu').val(respuesta['idRol']);
             $('#ubicacionu').val(respuesta['ubicacion']);
-            $('#contraseñau').val(respuesta['contraseña']);
+            $('#contraseñau').val(respuesta['contraseña2']);
         }
 
     });
@@ -82,6 +82,6 @@ function editarUsuario()
             }
         }
     });
-    
+
     return false;
 }

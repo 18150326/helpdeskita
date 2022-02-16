@@ -10,7 +10,7 @@
             $conexion = conexion::conectar();
             $sql = "SELECT * FROM t_usuarios WHERE usuario= '$usuario' AND password='$password' ";
             $respuesta = mysqli_query($conexion, $sql);
-            
+
             if(mysqli_num_rows($respuesta)>0)
             {
                 $datosUsuario = mysqli_fetch_array($respuesta);
@@ -25,15 +25,15 @@
             }
         }
 
-        //funcion agregar datos personales del usuario 
+        //funcion agregar datos personales del usuario
         public function agregarPersona($datos)
         {
             $conexion = Conexion::conectar();
-            $sql = "INSERT INTO t_persona(paterno, 
-                                          materno, 
-                                          nombre,          
-                                          telefono, 
-                                          correo, 
+            $sql = "INSERT INTO t_persona(paterno,
+                                          materno,
+                                          nombre,
+                                          telefono,
+                                          correo,
                                           fechaInsert)
             VALUES (?, ?, ?,  ?, ?, ?, ?)";
             $query = $conexion->prepare($sql);
@@ -52,19 +52,40 @@
         //funcion agregar datos de usuario
         public function agregarNuevoUsuario($datos)
         {
+            //Definicion para la encriptacion
+            define('METHOD','AES-256-CBC');
+  	        define('SECRET_KEY','Tecnologico');
+  	        define('SECRET_IV','990520');
+
+            //Guardar la contraseña
+            $contra = $datos['password'];
+
+            //Encriptar la contraseña
+      			$output=FALSE;
+      			$key=hash('sha256', SECRET_KEY);
+      			$iv=substr(hash('sha256', SECRET_IV), 0, 16);
+      			$output=openssl_encrypt($contra, METHOD, $key, 0, $iv);
+      			$encriptada=base64_encode($output);
+
+            //Desencriptar la contraseña
+      			$key=hash('sha256', SECRET_KEY);
+      			$iv=substr(hash('sha256', SECRET_IV), 0, 16);
+      			$desencriptada=openssl_decrypt(base64_decode($encriptada), METHOD, $key, 0, $iv);
+
+
+
             $conexion = Conexion::conectar();
-            
 
             $sql = 'INSERT INTO t_persona(paterno, materno, nombre, telefono, correo, fechaInsert)
             VALUES ("'.$datos['paterno'].'", "'.$datos['materno'].'", "'.$datos['nombre'].'",  "'.$datos['telefono'].'", "'.$datos['correo'].'", "'.$datos['fechaIn'].'")';
-            
+
             mysqli_query ($conexion, $sql);
             $idPersona = mysqli_insert_id($conexion);
 
             if($idPersona > 0){
                 $sql = 'INSERT INTO t_usuarios (id_rol, id_persona, usuario, password, ubicacion, fecha_Insert)
-                VALUES ("'.$datos['idRol'].'", "'.$idPersona.'", "'.$datos['usuario'].'",  "'.$datos['password'].'", "'.$datos['ubicacion'].'", "'.$datos['fechaIn'].'")';
-                
+                VALUES ("'.$datos['idRol'].'", "'.$idPersona.'", "'.$datos['usuario'].'",  "'.$encriptada.'", "'.$datos['ubicacion'].'", "'.$datos['fechaIn'].'")';
+
                 $respuesta = mysqli_query($conexion, $sql);
                 if($respuesta){
                     return "1";
@@ -75,10 +96,10 @@
 
             /*if($idPersona > 0 )
             {
-                $sql = "INSERT INTO t_usuarios (id_rol, 
-                                                id_persona, 
-                                                usuario, 
-                                                password, 
+                $sql = "INSERT INTO t_usuarios (id_rol,
+                                                id_persona,
+                                                usuario,
+                                                password,
                                                 ubicacion,
                                                 fecha_Insert)
                         VALUES (?, ?, ?, ?, ?, ?)";
@@ -90,7 +111,7 @@
                                               $datos['ubicacion'],
                                               $datos['fechaIn']);
                 $respuesta = $query->execute();
-                return $respuesta;        
+                return $respuesta;
             }
             else
             {
@@ -99,11 +120,17 @@
 
         }
 
+
+      /*  public string function contraseñadecrypt ($dato){
+          $passwordEdit2 = $dato;
+          return $passwordEdit2;
+        }*/
+
         //funcion obtener los datos de usuario y persona
         public function obtenerDatosUsuario($idUsuario)
         {
             $conexion = Conexion::conectar();
-            $sql = "SELECT 
+            $sql = "SELECT
                             usuarios.id_usuario AS idUsuario,
                             usuarios.usuario AS nombreUsuario,
                             roles.nombre AS rol,
@@ -129,6 +156,14 @@
             $respuesta = mysqli_query($conexion, $sql);
             $usuario = mysqli_fetch_array($respuesta);
 
+            define('METHOD','AES-256-CBC');
+  	        define('SECRET_KEY','Tecnologico');
+  	        define('SECRET_IV','990520');
+        //
+  			$key=hash('sha256', SECRET_KEY);
+  			$iv=substr(hash('sha256', SECRET_IV), 0, 16);
+  			$desencriptada=openssl_decrypt(base64_decode($usuario ['contraseña']), METHOD, $key, 0, $iv);
+
             $datos = array (
                 'idUsuario' => $usuario['idUsuario'],
                 'nombreUsuario' => $usuario['nombreUsuario'],
@@ -143,12 +178,14 @@
                 'fechaAlta' => $usuario['fechaAlta'],
                 'correo'=> $usuario['correo'],
                 'telefono' => $usuario['telefono'],
-                'contraseña' => $usuario['contraseña']
+                'contraseña' => $usuario ['contraseña'],
+                'contraseña2' => $desencriptada
+
             );
             return $datos;
         }
 
-        
+
 
         //funcion obtener el id persona
         public function obtenerIdPersona($idUsuario)
@@ -169,7 +206,7 @@
         {
             $conexion = Conexion::conectar();
             $idPersona = self::obtenerIdPersona($datos['idUsuario']);
-            $sql = "UPDATE t_persona SET 
+            $sql = "UPDATE t_persona SET
                                          paterno = ?,
                                          materno = ?,
                                          nombre = ?,
@@ -178,7 +215,7 @@
                                          fechaInsert = ?
                     WHERE id_persona = $idPersona";
             $query = $conexion->prepare($sql);
-            $query->bind_param('ssssss',                               
+            $query->bind_param('ssssss',
                                                 $datos['paterno'],
                                                 $datos['materno'],
                                                 $datos['nombre'],
@@ -190,11 +227,14 @@
             return $respuesta;
         }
 
+
         //funcion actualizar/editar datos de usuario
         public function editarUsuario($datos)
         {
             $conexion = Conexion::conectar();
             $exitoPersona = self::editarPersona($datos);
+            $passwordEdit = $datos['contraseña'];
+            $passwordEditEncrypt = MD5($passwordEdit);
             if($exitoPersona)
             {
                 $sql = "UPDATE t_usuarios SET id_rol = ?,
@@ -206,8 +246,9 @@
                 $query -> bind_param('isssi',  $datos['idRol'],
                                               $datos['usuario'],
                                               $datos['ubicacion'],
-                                              $datos['contraseña'],
+                                              $passwordEditEncrypt,
                                               $datos['idUsuario']);
+
                 $respuesta = $query -> execute();
                 $query -> close();
                 return $respuesta;
