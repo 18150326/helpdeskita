@@ -36,6 +36,11 @@
           $sql = "UPDATE t_reportes SET estado = 2
           WHERE id_reporte = '".$datos['idReporte']."'";
           $resultado = mysqli_query($conexion,$sql);
+          if($resultado){
+            return 1;
+          }else{
+            return 0;
+          }
         }
 
         public function RecogerReporte($datos)

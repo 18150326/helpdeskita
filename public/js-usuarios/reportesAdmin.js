@@ -17,12 +17,12 @@ function terminarReporte()
             {
                 $('#cargartablareportes').load("Reportes/tablareportesAdmin.php");
                 $('#frmterminarReporte')[0].reset();
-                Swal.fire("Operación realizada","Reporte realizado! " + respuesta,"success");
+                Swal.fire("Operación realizada","Reporte realizado! ","success");
 
             }
             else
             {
-                Swal.fire("Operación no realizada","Error al realizar el reporte" + respuesta, "error");
+                Swal.fire("Operación no realizada","Error al realizar el reporte", "error");
             }
         }
 

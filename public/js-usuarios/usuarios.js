@@ -18,12 +18,12 @@ function agregarNuevoUsuario()
             {
                 $('#cargartablausuarios').load("Usuarios/tablausuarios.php");
                 $('#frmAgregarUsuario')[0].reset();
-                Swal.fire("Operación realizada","Agregado con exito! " + respuesta,"success");
+                Swal.fire("Operación realizada","Agregado con exito! ","success");
 
             }
             else
             {
-                Swal.fire("Operación no realizada","Error al agregar" + respuesta, "error");
+                Swal.fire("Operación no realizada","Error al agregar", "error");
             }
         }
 
@@ -73,12 +73,12 @@ function editarUsuario()
             if(respuesta == 1)
             {
                 $('#cargartablausuarios').load("Usuarios/tablausuarios.php");
-                Swal.fire("Operación realizada","Editado con exito! " + respuesta,"success");
+                Swal.fire("Operación realizada","Editado con exito! ","success");
 
             }
             else
             {
-                Swal.fire("Operación no realizada","Error al editar" + respuesta, "error");
+                Swal.fire("Operación no realizada","Error al editar", "error");
             }
         }
     });

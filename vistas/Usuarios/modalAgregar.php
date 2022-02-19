@@ -67,7 +67,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <label for="ubicacion">Ubicación</label>
+                <label for="ubicacion">Departamento</label>
                 <textarea name="ubicacion" id="ubicacion" class="form-control" required></textarea>
             </div>
         </div>

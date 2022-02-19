@@ -4,8 +4,8 @@
     );
 
     //echo json_encode($datos);
-    include "../../../clases/Reportes.php";
-    $Reportes = new Reportes();
-    echo json_encode($Reportes->FirmarReporte($datos));
+    include "../../../clases/ReportesT.php";
+    $ReportesT = new ReportesT();
+    echo json_encode($ReportesT->CambiarEstado($datos));
 
 ?>

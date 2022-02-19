@@ -111,7 +111,7 @@
     }
 
     function CambiarEstado (id) {
-        document.getElementById("idReporte").value = id;
+        document.getElementById("idReporteCE").value = id;
         $('#modalCambiarEstado').modal('show');
     }
 
