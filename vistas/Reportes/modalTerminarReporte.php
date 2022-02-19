@@ -14,9 +14,9 @@
         
         <!-- Formulario en modal -->
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-4 d-none">
                 <label for="idReporte"> ID reporte </label>
-                <input type="text" class="form-control" id="idReporte" name="idReporte" required >
+                <input type="text" class="form-control" id="idReporte" name="idReporte" required>
             </div>
             
             <div class="col-sm-5">
@@ -73,7 +73,7 @@
 
       </div>
       <div class="modal-footer">
-        <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
+        <span class="btn btn-secondary" data-dismiss="modal" id="button_cerrar">Cerrar</span>
         <a class="btn btn-primary" href="#" id="button-terminar_reporte">Terminar reporte</a>
       </div>
     </div>
@@ -94,10 +94,14 @@
             body: dataForm
         });        
 
+
+
         const data = await res.json();
+        // console.log(data);
         if(data == 1){
             Swal.fire("Operación realizada","¡Reporte terminado! ","success");
             $('#cargartablareportes').load("Reportes/tablareportesP_Admin.php");
+            document.getElementById("button_cerrar").click();            
         }else{
             Swal.fire("Operación no realizada","Error al realizar el reporte", "error");
         }

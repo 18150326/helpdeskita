@@ -12,14 +12,15 @@ function agregarNuevoUsuario()
         data: $('#frmAgregarUsuario').serialize(),
         url: "../procesos/usuarios/crud/agregarNuevoUsuario.php",
         success:function(respuesta)
-        {
+        {   
             respuesta = respuesta.trim();
+            
             if(respuesta == 1)
             {
                 $('#cargartablausuarios').load("Usuarios/tablausuarios.php");
                 $('#frmAgregarUsuario')[0].reset();
+                document.getElementById("button_cerrarA").click();
                 Swal.fire("Operación realizada","Agregado con exito! ","success");
-
             }
             else
             {
@@ -33,9 +34,32 @@ function agregarNuevoUsuario()
     return false;
 }
 
-function obtenerDatosUsuario(idUsuario)
+async function obtenerDatosUsuario(idUsuario)
 {
-    $.ajax({
+    const dataSend = {
+      "idUsuario": idUsuario
+    }
+    
+    const res = await fetch("../procesos/usuarios/crud/obtenerDatosUsuario.php",{
+        body: JSON.stringify(dataSend),
+        method: "POST"
+    });
+
+    const data = await res.json();
+    
+    
+    $('#idUsuario').val(data['idUsuario']);
+    $('#paternou').val(data['ApPaterno']);
+    $('#maternou').val(data['ApMaterno']);
+    $('#nombreu').val(data['nombrePersona']);
+    $('#fechaInu').val(data['fechaAlta']);
+    $('#telefonou').val(data['telefono']);
+    $('#correou').val(data['correo']);
+    $('#usuariou').val(data['nombreUsuario']);
+    $('#idRolu').val(data['idRol']);
+    $('#ubicacionu').val(data['ubicacion']);
+    $('#contraseñau').val(data['contraseña2']);
+    /*$.ajax({
 
         type: "POST",
         data: "idUsuario=" + idUsuario,
@@ -43,7 +67,7 @@ function obtenerDatosUsuario(idUsuario)
         success:function(respuesta)
         {
             respuesta = jQuery.parseJSON(respuesta);
-            console.log(respuesta);
+            // console.log( jQuery.parseJSON(respuesta));
             $('#idUsuario').val(respuesta['idUsuario']);
             $('#paternou').val(respuesta['ApPaterno']);
             $('#maternou').val(respuesta['ApMaterno']);
@@ -57,7 +81,7 @@ function obtenerDatosUsuario(idUsuario)
             $('#contraseñau').val(respuesta['contraseña2']);
         }
 
-    });
+    });*/
 }
 
 function editarUsuario()
@@ -73,8 +97,9 @@ function editarUsuario()
             if(respuesta == 1)
             {
                 $('#cargartablausuarios').load("Usuarios/tablausuarios.php");
-                Swal.fire("Operación realizada","Editado con exito! ","success");
-
+                // document.getElementById("button_cerrarE").click();
+                $('#frmEditarUsuario').modal('hide');
+                Swal.fire("Operación realizada","Editado con exito! ","success");                
             }
             else
             {

@@ -7,6 +7,7 @@ function loginusuario()
         success:function(respuesta)
         {
             respuesta = respuesta.trim();
+            console.log(respuesta);
             if(respuesta == 1)
             {
                 window.location.href = "vistas/inicio.php";

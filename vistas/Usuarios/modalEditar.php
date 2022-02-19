@@ -67,7 +67,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <label for="ubicacionu">Departamento</label>
+                <label for="ubicacionu">Ubicación</label>
                 <textarea name="ubicacionu" id="ubicacionu" class="form-control" required></textarea>
             </div>
         </div>
@@ -75,7 +75,7 @@
 
       </div>
       <div class="modal-footer">
-        <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
+        <span class="btn btn-secondary" data-dismiss="modal" id="button_cerrarE">Cerrar</span>
         <button class="btn btn-warning">Editar</button>
       </div>
     </div>

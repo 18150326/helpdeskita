@@ -16,13 +16,13 @@
             $con = mysqli_connect($servidor, $usuario, $password, $db);
             $con->set_charset("utf8");
 
-            //$sql = "INSERT INTO t_reportes(folio, id_usuario, area_solicitante, nombre_solicitante,fecha_elaboracion,descripcion)
-            //VALUES ('".$datos['folio']."', '".$datos['id_usuario']."', '".$datos['area_solicitante']."', '".$datos['nombre_solicitante']."', '".$datos['fecha_elaboracion']."', '".$datos['descripcion']."')";
-
-            $sql =<<<EOT
+            $sql = "INSERT INTO t_reportes(folio, id_usuario, area_solicitante, nombre_solicitante,fecha_elaboracion,descripcion)
+            VALUES ('".$datos['folio']."', '".$datos['id_usuario']."', '".$datos['area_solicitante']."', '".$datos['nombre_solicitante']."', '".$datos['fecha_elaboracion']."', '".$datos['descripcion']."')";
+            // echo $sql;
+            /*$sql =<<<EOT
             INSERT INTO t_reportes(folio, id_usuario, area_solicitante, nombre_solicitante,fecha_elaboracion,descripcion)
             VALUES ("{$datos['folio']}", "{$datos['id_usuario']}", "{$datos['area_solicitante']}", "{$datos['nombre_solicitante']}", "{$datos['fecha_elaboracion']}",  "{$datos['descripcion']}")
-            EOT;
+            EOT;*/
 
 
             $result = mysqli_query($con, $sql);

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../public/datatable/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../public/datatable/buttons.dataTables.min.css">
     <!-- fontawesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/cb918a26fb.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <!-- Animaciones -->
@@ -70,10 +70,9 @@
       <?php } ?>
     </ul>
     <div class="my-2 my-lg-0">
-
-      <?php if ($_SESSION['usuario']['rol'] == 2) {?>
-      <a class="btn btn-outline-info" href="perfil.php"><?php echo $_SESSION['usuario']['nombre']; ?> <i class="fas fa-cog config-button"></i></a>
-      <?php } ?>
+     
+      <a class="btn btn-outline-info" href="#"><?php echo $_SESSION['usuario']['nombre']; ?>  <i class="fas fa-user"></i></a>
+      
       <a class="btn btn-outline-danger" href="../procesos/usuarios/login/salir.php">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
     </div>
   </div>

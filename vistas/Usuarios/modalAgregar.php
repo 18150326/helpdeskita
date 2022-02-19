@@ -75,7 +75,7 @@
 
       </div>
       <div class="modal-footer">
-        <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
+        <span class="btn btn-secondary" data-dismiss="modal" id="button_cerrarA">Cerrar</span>
         <button class="btn btn-primary">Agregar</button>
       </div>
     </div>

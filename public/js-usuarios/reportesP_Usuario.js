@@ -14,12 +14,13 @@ function crearReporte()
         success:function(respuesta)
         {
             respuesta = respuesta.trim();
+            // console.log(respuesta);
             if(respuesta == 1)
             {
                 $('#cargartablareportes').load("Reportes/tablareportesP_Usuario.php");
                 $('#frmcrearReporte')[0].reset();
                 Swal.fire("Operación realizada","Reporte realizado! ","success");
-
+                $('#frmcrearReporte').modal('hide');
             }
             else
             {

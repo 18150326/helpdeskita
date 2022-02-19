@@ -12,7 +12,7 @@
       </div>
       <div class="modal-body">
 
-        <input type="text" id="idUsuario" name="idUsuario" class="d-none">
+        <input type="text" id="idUsuario" name="idUsuario" value="<?php echo $idUsuario;?>" hidden>
         <!-- Formulario en modal -->
         <div class="row">
 

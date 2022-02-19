@@ -1,6 +1,7 @@
 <?php
 
     include "conexion.php";
+    include "funciones_encriptacion.php";
 
     class Usuarios extends conexion
     {
@@ -52,26 +53,15 @@
         //funcion agregar datos de usuario
         public function agregarNuevoUsuario($datos)
         {
-            //Definicion para la encriptacion
-            define('METHOD','AES-256-CBC');
-  	        define('SECRET_KEY','Tecnologico');
-  	        define('SECRET_IV','990520');
-
+            
             //Guardar la contraseña
             $contra = $datos['password'];
 
             //Encriptar la contraseña
-      			$output=FALSE;
-      			$key=hash('sha256', SECRET_KEY);
-      			$iv=substr(hash('sha256', SECRET_IV), 0, 16);
-      			$output=openssl_encrypt($contra, METHOD, $key, 0, $iv);
-      			$encriptada=base64_encode($output);
-
+      			$encriptada = getEncryptedPassword($contra);
+            
             //Desencriptar la contraseña
-      			$key=hash('sha256', SECRET_KEY);
-      			$iv=substr(hash('sha256', SECRET_IV), 0, 16);
-      			$desencriptada=openssl_decrypt(base64_decode($encriptada), METHOD, $key, 0, $iv);
-
+      			$desencriptada =getUnencryptedPassword($encriptada);
 
 
             $conexion = Conexion::conectar();
@@ -88,43 +78,15 @@
 
                 $respuesta = mysqli_query($conexion, $sql);
                 if($respuesta){
+                    
                     return "1";
                 }else{
+                    
                     return "0";
                 }
             }
-
-            /*if($idPersona > 0 )
-            {
-                $sql = "INSERT INTO t_usuarios (id_rol,
-                                                id_persona,
-                                                usuario,
-                                                password,
-                                                ubicacion,
-                                                fecha_Insert)
-                        VALUES (?, ?, ?, ?, ?, ?)";
-                $query = $conexion->prepare($sql);
-                $query->bind_param("iissss", $datos['idRol'],
-                                              $idPersona,
-                                              $datos['usuario'],
-                                              $datos['password'],
-                                              $datos['ubicacion'],
-                                              $datos['fechaIn']);
-                $respuesta = $query->execute();
-                return $respuesta;
-            }
-            else
-            {
-                return 0;
-            }*/
-
         }
 
-
-      /*  public string function contraseñadecrypt ($dato){
-          $passwordEdit2 = $dato;
-          return $passwordEdit2;
-        }*/
 
         //funcion obtener los datos de usuario y persona
         public function obtenerDatosUsuario($idUsuario)
@@ -159,10 +121,12 @@
             define('METHOD','AES-256-CBC');
   	        define('SECRET_KEY','Tecnologico');
   	        define('SECRET_IV','990520');
-        //
-  			$key=hash('sha256', SECRET_KEY);
-  			$iv=substr(hash('sha256', SECRET_IV), 0, 16);
-  			$desencriptada=openssl_decrypt(base64_decode($usuario ['contraseña']), METHOD, $key, 0, $iv);
+            //
+      			/*$key=hash('sha256', SECRET_KEY);
+      			$iv=substr(hash('sha256', SECRET_IV), 0, 16);
+      			$desencriptada=openssl_decrypt(base64_decode($usuario ['contraseña']), METHOD, $key, 0, $iv);*/
+
+            $desencriptada = getUnencryptedPassword($usuario ['contraseña']);
 
             $datos = array (
                 'idUsuario' => $usuario['idUsuario'],
@@ -206,6 +170,7 @@
         {
             $conexion = Conexion::conectar();
             $idPersona = self::obtenerIdPersona($datos['idUsuario']);
+
             $sql = "UPDATE t_persona SET
                                          paterno = ?,
                                          materno = ?,
@@ -234,7 +199,8 @@
             $conexion = Conexion::conectar();
             $exitoPersona = self::editarPersona($datos);
             $passwordEdit = $datos['contraseña'];
-            $passwordEditEncrypt = MD5($passwordEdit);
+            $passwordEditEncrypt = getEncryptedPassword($passwordEdit);
+
             if($exitoPersona)
             {
                 $sql = "UPDATE t_usuarios SET id_rol = ?,

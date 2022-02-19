@@ -27,13 +27,17 @@ if ($desde != "" && $hasta != "")
             finalizados.fecha_verificado AS fechaVerificado,
             finalizados.aprobado AS aprobado,
             finalizados.fecha_aprobado AS fechaAprobado,
-            finalizados.firma_verificacion AS firmaVerificacion
+            finalizados.firma_verificacion AS firmaVerificacion,
+            encargados.nombre AS nombreEncargado,
+            finalizados.documento_recogido AS recogido
             FROM
             t_reportes AS reportes
             INNER JOIN
             t_reportes_finalizados AS finalizados ON finalizados.id_reporte = reportes.id_reporte
             INNER JOIN
             t_cat_mantenimiento AS mantenimiento ON finalizados.id_mantenimiento = mantenimiento.id_mantenimiento
+            INNER JOIN
+            t_encargados AS encargados ON finalizados.aprobado = encargados.id_encargado
             WHERE finalizados.fecha_realizacion BETWEEN '$desde' AND '$hasta'";
 }
 else

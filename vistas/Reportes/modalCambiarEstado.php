@@ -34,18 +34,19 @@
 
 <script>
 document.getElementById("button-cambiar").addEventListener("click",async function(){
-const form = document.getElementById("frmCambiarEstado");
-const dataform = new FormData(form);
-const res = await fetch("../procesos/reportes/crud/cambiarEstado.php", {
-  method: "POST", body: dataform
-});
-const data = await res.json();
-if(data == 1){
-  Swal.fire("Operación realizada","¡El reporte ahora esta en proceso! ","success");
-  $('#cargartablareportes').load("Reportes/tablareportesP_Admin.php");
-}else{
-  Swal.fire("Operación no realizada","Error al realizar cambio", "error");
-}
+  const form = document.getElementById("frmCambiarEstado");
+  const dataform = new FormData(form);
+  const res = await fetch("../procesos/reportes/crud/cambiarEstado.php", {
+    method: "POST", body: dataform
+  });
+  const data = await res.json();
+  if(data == 1){
+    Swal.fire("Operación realizada","¡El reporte ahora esta en proceso! ","success");
+    $('#cargartablareportes').load("Reportes/tablareportesP_Admin.php");
+    $('#frmCambiarEstado').modal('hide');
+  }else{
+    Swal.fire("Operación no realizada","Error al realizar cambio", "error");
+  }
 
 });
 

@@ -1,7 +1,8 @@
 <?php
-
+  
   include "header.php";
   include "../clases/Reportes.php";
+  
   $con = new conexion();
   $conexion1 = $con->conectar();
   $idUsuario = $_SESSION['usuario']['id'];

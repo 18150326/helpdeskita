@@ -10,7 +10,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <input type="text" id="idReporteF" name="idReporteF" class="d-none">
+      <input type="text" id="idReporteF" name="idReporteF" hidden>
       <div class="modal-body">
         <!-- Formulario en modal -->
         <div class="row">

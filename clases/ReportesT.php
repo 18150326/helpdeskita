@@ -19,6 +19,8 @@
                     WHERE id_reporte = '".$datos['idReporte']."'";
 
             // echo json_encode($sql1);
+            /*echo $sql."</br>";
+            echo $sql1."</br>";*/
             $resultado = mysqli_query($conexion,$sql);
             $resultado2 = mysqli_query($conexion,$sql1);
 

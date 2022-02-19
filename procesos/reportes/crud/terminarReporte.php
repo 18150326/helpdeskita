@@ -13,7 +13,7 @@
     );
 
     /*$datos= array(
-        "idReporte" => 2,
+        "idReporte" => 56,
         "id_mantenimiento" => 1,
         "tipo_servicio" => "a",
         "asignado" => "a",
@@ -24,7 +24,7 @@
         "aprobado" => "a",
         "fecha_aprobado" => "a"
      );*/
-    // echo json_encode($datos);
+    
 
     include "../../../clases/ReportesT.php";
     $Reportes = new ReportesT();
