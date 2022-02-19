@@ -37,7 +37,6 @@
         <th>Ubicacion</th>
         <th>Correo</th>
         <th>Usuario</th>
-        <th>Estado</th>
         <th>Editar</th>
     
     </thead>
@@ -58,22 +57,6 @@
             <td><?php echo $mostrar['ubicacion']; ?></td>
             <td><?php echo $mostrar['correo']; ?></td>
             <td><?php echo $mostrar['nombreUsuario']; ?></td>
-
-            <td>
-                <?php if($mostrar['estatus'] == 1) {?>
-                    <button class="btn btn-info btn-sm">
-                        Activo
-                    </button>
-                <?php
-                } else {
-                ?>
-                    <button class="btn btn-info btn-sm">
-                        Inactivo
-                    </button>
-                <?php
-                    } 
-                ?>
-            </td>
             
             <td>
                 <?php if($mostrar['estatus'] ==1 ){?>

@@ -38,11 +38,6 @@
 
 ?>
 
-<button id="button-crear_reportes" class="btn btn-primary" data-toggle="modal" data-target="#modalcrearReporte"
-                onclick="obtenerDatosUsuario(<?php echo $mostrar1[0]['idUsuario']?>)" >
-          Crear reporte
-</button>
-
 <table class="table table-sm dt-responsive nowrap" id="tablaReportesDataTable" style="width:100%">
 
     <thead>
