@@ -67,14 +67,16 @@
             $conexion = Conexion::conectar();
 
             $sql = 'INSERT INTO t_persona(paterno, materno, nombre, telefono, correo, fechaInsert)
-            VALUES ("'.$datos['paterno'].'", "'.$datos['materno'].'", "'.$datos['nombre'].'",  "'.$datos['telefono'].'", "'.$datos['correo'].'", "'.$datos['fechaIn'].'")';
+            VALUES ("'.$datos['paterno'].'", "'.$datos['materno'].'", "'.$datos['nombre'].'",  
+            "'.$datos['telefono'].'", "'.$datos['correo'].'", "'.$datos['fechaIn'].'")';
 
             mysqli_query ($conexion, $sql);
             $idPersona = mysqli_insert_id($conexion);
 
             if($idPersona > 0){
                 $sql = 'INSERT INTO t_usuarios (id_rol, id_persona, usuario, password, ubicacion, fecha_Insert)
-                VALUES ("'.$datos['idRol'].'", "'.$idPersona.'", "'.$datos['usuario'].'",  "'.$encriptada.'", "'.$datos['ubicacion'].'", "'.$datos['fechaIn'].'")';
+                VALUES ("'.$datos['idRol'].'", "'.$idPersona.'", "'.$datos['usuario'].'",  "'.$encriptada.'", 
+                "'.$datos['ubicacion'].'", "'.$datos['fechaIn'].'")';
 
                 $respuesta = mysqli_query($conexion, $sql);
                 if($respuesta){

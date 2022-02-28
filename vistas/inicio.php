@@ -14,7 +14,9 @@
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
       <h1 class="fw-light">Inicio</h1>
-      <p class="lead">Content on the page will</p>
+      <hr>
+      <p class="h2">Bienvenido <strong><?php echo $_SESSION['usuario']['nombre']; ?>.</strong></p>
+      <p>Tipo de usuario: <strong><?php if($_SESSION['usuario']['rol'] == 2)echo "Administrador";  if($_SESSION['usuario']['rol'] == 1)echo "Usuario Normal";?>.</strong></p>
     </div>
   </div>
 </div>

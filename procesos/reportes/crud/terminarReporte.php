@@ -12,20 +12,6 @@
        "fecha_aprobado" => $_POST['fechaAprobado']
     );
 
-    /*$datos= array(
-        "idReporte" => 56,
-        "id_mantenimiento" => 1,
-        "tipo_servicio" => "a",
-        "asignado" => "a",
-        "fecha_realizacion" => "a",
-        "trabajo_realizado" => "a",
-        "verificado_liberado" => "a",
-        "fecha_verificado" => "a",
-        "aprobado" => "a",
-        "fecha_aprobado" => "a"
-     );*/
-    
-
     include "../../../clases/ReportesT.php";
     $Reportes = new ReportesT();
     // echo $Reportes->terminarReporte($datos);

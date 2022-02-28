@@ -25,9 +25,7 @@ $consulta = "SELECT tr.id_reporte, tp.nombre, tr.area_solicitante, tr.fecha_elab
 			 WHERE tr.id_reporte = '$reporte'";
 $resultado = mysqli_query($conexion, $consulta);
 
-// if($resultado){
-// 	echo "esta funcionado la consulta";
-// }
+
 
 $datosReporte = array();
 
