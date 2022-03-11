@@ -1,3 +1,7 @@
+﻿drop database helpdeskita;
+create database helpdeskita;
+use helpdeskita;
+
 -- phpMyAdmin SQL Dump
 -- version 4.8.4
 -- https://www.phpmyadmin.net/
@@ -6,27 +10,6 @@
 -- Generation Time: Feb 28, 2022 at 06:36 AM
 -- Server version: 8.0.22-13
 -- PHP Version: 7.2.34
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `b1o04dzhm1guhvmjcrwb`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `t_cat_mantenimiento`
---
 
 CREATE TABLE `t_cat_mantenimiento` (
   `id_mantenimiento` int NOT NULL,
@@ -51,7 +34,7 @@ CREATE TABLE `t_cat_roles` (
   `id_rol` int NOT NULL,
   `nombre` varchar(245) NOT NULL,
   `descripcion` varchar(245) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+)  ;
 
 --
 -- Dumping data for table `t_cat_roles`
@@ -94,7 +77,7 @@ CREATE TABLE `t_persona` (
   `telefono` varchar(45) DEFAULT NULL,
   `correo` varchar(245) DEFAULT NULL,
   `fechaInsert` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+)  ;
 
 -- --------------------------------------------------------
 
@@ -106,12 +89,12 @@ CREATE TABLE `t_reportes` (
   `id_reporte` int NOT NULL,
   `id_usuario` int NOT NULL,
   `folio` int NOT NULL,
-  `area_solicitante` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `area_solicitante` varchar(120)   ,
   `nombre_solicitante` text NOT NULL,
   `fecha_elaboracion` text NOT NULL,
   `descripcion` text NOT NULL,
   `estado` int NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+)  ;
 
 -- --------------------------------------------------------
 
@@ -133,7 +116,7 @@ CREATE TABLE `t_reportes_finalizados` (
   `fecha_aprobado` text NOT NULL,
   `firma_verificacion` int NOT NULL DEFAULT '1',
   `documento_recogido` int NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+)  ;
 
 -- --------------------------------------------------------
 
@@ -146,11 +129,11 @@ CREATE TABLE `t_usuarios` (
   `id_rol` int NOT NULL,
   `id_persona` int NOT NULL,
   `usuario` varchar(245) NOT NULL,
-  `password` varchar(245) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `password` varchar(245)   ,
   `ubicacion` text,
   `fecha_insert` varchar(45) DEFAULT NULL,
   `Estado` int NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+)  ;
 
 --
 -- Indexes for dumped tables
@@ -256,6 +239,13 @@ ALTER TABLE `t_usuarios`
   ADD CONSTRAINT `t_usuarios_ibfk_2` FOREIGN KEY (`id_persona`) REFERENCES `t_persona` (`id_persona`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+#Agregamos usuario admin
+insert into t_persona values (1,"Cruz","Rodríguez","Carlos Uriel", 4491543007,"soraxurix@gmail.com","2022-02-18");
+insert into t_usuarios values (1,2,1,"admin","ck1TTUM3ZHp0dmlERmY1bnJUbkEwUT09","sistemas", "2022-02-18",1);
+
+#Agregamos el cliente de prueba
+insert into t_persona values (2,"Alonso","Ibarra","Carlos Antonio", 4491543007,"oclivus@gmail.com","2022-02-18");
+insert into t_usuarios values (2,2,1,"oclivus","ck1TTUM3ZHp0dmlERmY1bnJUbkEwUT09","sistemas", "2022-02-18",1);
+
+#Creamos el reporte de prueba
+insert into t_reportes values (1,2,1,"Química", "Antonio", "2022-02-21", "Ignorar, esto es solo una prueba", 1);

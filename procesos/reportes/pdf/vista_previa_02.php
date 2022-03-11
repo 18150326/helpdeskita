@@ -11,11 +11,7 @@ $hoy = date('Y-m-d G:i:s', time());
 // Require composer autoload
 require_once __DIR__ . '/../../../public/mpdf/vendor/autoload.php';
 
-$servidor = "b1o04dzhm1guhvmjcrwb-mysql.services.clever-cloud.com";
-$usuario = "ulpt7sduld7rn0so";
-$password = "88bFiBTpsfGsC3WbaBaT";
-$db = "b1o04dzhm1guhvmjcrwb";
-$conexion = mysqli_connect($servidor,$usuario,$password,$db);
+include "../../../clases/conexion_general.php";
 
 $consulta = "SELECT
                   reportes.id_reporte AS idReporte,

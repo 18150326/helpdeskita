@@ -16,16 +16,10 @@
 
 
     function generarID (){
-      $servidor = "b1o04dzhm1guhvmjcrwb-mysql.services.clever-cloud.com";
-      $usuario = "ulpt7sduld7rn0so";
-      $password = "88bFiBTpsfGsC3WbaBaT";
-      $db = "b1o04dzhm1guhvmjcrwb";
-      
-      $con = mysqli_connect($servidor, $usuario, $password, $db);
-      $con->set_charset("utf8");
+      include "../../../clases/conexion_general.php";
 
       $consulta = "SELECT folio FROM `t_reportes` ORDER BY folio DESC LIMIT 1";
-      $result = mysqli_query($con, $consulta);
+      $result = mysqli_query($conexion, $consulta);
 
       $data = array();
 

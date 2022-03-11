@@ -8,20 +8,14 @@
         //Funcion para agregar los datos de un reporte a la base de datos
         public function crearReporte($datos)
         {
-            $servidor = "b1o04dzhm1guhvmjcrwb-mysql.services.clever-cloud.com";
-            $usuario = "ulpt7sduld7rn0so";
-            $password = "88bFiBTpsfGsC3WbaBaT";
-            $db = "b1o04dzhm1guhvmjcrwb";
-
-            $con = mysqli_connect($servidor, $usuario, $password, $db);
-            $con->set_charset("utf8");
-
+            include "conexion_general.php";
+            
             $sql = "INSERT INTO t_reportes(folio, id_usuario, area_solicitante, nombre_solicitante,fecha_elaboracion,descripcion)
             VALUES ('".$datos['folio']."', '".$datos['id_usuario']."', '".$datos['area_solicitante']."', '".$datos['nombre_solicitante']."', 
             '".$datos['fecha_elaboracion']."', '".$datos['descripcion']."')";
 
 
-            $result = mysqli_query($con, $sql);
+            $result = mysqli_query($conexion, $sql);
 
             if($result){
               return "1";

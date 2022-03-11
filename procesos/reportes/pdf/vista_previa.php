@@ -12,11 +12,7 @@ $hoy = date('Y-m-d G:i:s', time());
 // Require composer autoload
 require_once __DIR__ . '/../../../public/mpdf/vendor/autoload.php';
 
-$servidor = "b1o04dzhm1guhvmjcrwb-mysql.services.clever-cloud.com";
-$usuario = "ulpt7sduld7rn0so";
-$password = "88bFiBTpsfGsC3WbaBaT";
-$db = "b1o04dzhm1guhvmjcrwb";
-$conexion = mysqli_connect($servidor,$usuario,$password,$db);
+include "../../../clases/conexion_general.php";
 
 $consulta = "SELECT tr.id_reporte, tp.nombre, tr.area_solicitante, tr.fecha_elaboracion, tr.descripcion
 			 FROM t_reportes tr 
@@ -58,7 +54,7 @@ $html = '
 	        <td><strong>Revisión: 0</strong></td>
 	    </tr>
 	    <tr>
-	        <td><strong>Página 1 de 2</strong></td>
+	        <td><strong>Página 1 de 1</strong></td>
 	    </tr>
 	</table>
 	<p class="titulo"><strong>SOLICITUD MANTENIMIENTO CORRECTIVO</strong></p>
