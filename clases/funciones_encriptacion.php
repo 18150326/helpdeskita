@@ -1,7 +1,7 @@
 <?php 
 function getEncryptedPassword($password){
     define('METHOD','AES-256-CBC');
-    define('SECRET_KEY','Tecnologico');
+    define('SECRET_KEY','parangaricutirimicuaro');
     define('SECRET_IV','990520');
 
     $output=FALSE;
